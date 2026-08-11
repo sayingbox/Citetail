@@ -70,9 +70,9 @@
   .btn-ghost:hover{border-color:var(--violet-400);background:rgba(30,58,138,0.06);}
 
  /* menu logo */
-.logo-icon{
-  width:10px;
-  height:10px;
+.logo .logo-icon{
+  width:26px !important;
+  height:26px !important;
   border-radius:6px;
   object-fit:cover;
   flex-shrink:0;
