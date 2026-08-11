@@ -71,8 +71,8 @@
 
  /* menu logo */
 .logo-icon{
-  width:26px;
-  height:26px;
+  width:10px;
+  height:10px;
   border-radius:6px;
   object-fit:cover;
   flex-shrink:0;
