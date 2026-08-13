@@ -5,8 +5,8 @@
 ## Main Pages
 
 - [Home](https://citetail.com/)
-- [AEO](https://citetail.com/aeo.html)
-- [GEO](https://citetail.com/geo.html)
+- [AEO](https://citetail.com/aeo)
+- [GEO](https://citetail.com/geo)
 
 ## What CiteTail Does
 
