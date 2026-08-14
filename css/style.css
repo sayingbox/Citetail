@@ -144,7 +144,7 @@
 
   .alert-item{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);}
   .alert-item:last-child{border-bottom:none;}
-  .alert-dot{width:7px;height:7px;border-radius:50%;background:var(--gold-500);margin-top:6px;flex-shrink:0;}
+  .alert-dot{width:7px;height:7px;border-radius:50%;background:var(--red-500);margin-top:6px;flex-shrink:0;}
   .alert-item.pos .alert-dot{background:var(--violet-500);}
   .alert-item .t{font-size:13.5px;font-weight:500;}
   .alert-item .d{font-size:11.5px;color:var(--text-2);margin-top:2px;font-family:'Inter',sans-serif;}
