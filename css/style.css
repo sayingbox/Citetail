@@ -69,16 +69,7 @@
   .btn-ghost{padding:14px 22px;border-radius:6px;font-weight:600;font-size:14.5px;border:1px solid var(--line-strong);color:var(--text-1);transition:border-color .15s, background .15s;}
   .btn-ghost:hover{border-color:var(--violet-400);background:rgba(30,58,138,0.06);}
 
- /* menu logo */
-.logo .logo-icon{
-  width:26px !important;
-  height:26px !important;
-  border-radius:6px;
-  object-fit:cover;
-  flex-shrink:0;
-}
-
-/* constellation visual */
+  /* constellation visual */
   .constellation{padding:0;}
   .bubble-stage{position:relative;height:320px;}
   .bubble{
