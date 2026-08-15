@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Signal Lost</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-deep:#062825;
+    --teal-base:#0B3D3A;
+    --teal-mid:#12564F;
+    --teal-accent:#17B8A6;
+    --teal-bright:#4FEBD4;
+    --ink:#EAF6F4;
+    --ink-dim:#8FB8B2;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html,body{
+    height:100%;
+    background:
+      radial-gradient(ellipse 120% 80% at 50% -10%, var(--teal-mid) 0%, transparent 60%),
+      var(--teal-deep);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    overflow:hidden;
+  }
+
+  .stage{
+    position:relative;
+    height:100vh;
+    width:100vw;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    perspective:1200px;
+  }
+
+  /* ambient grid floor */
+  .grid-floor{
+    position:absolute;
+    bottom:0; left:0; right:0;
+    height:45vh;
+    background-image:
+      linear-gradient(var(--teal-accent) 1px, transparent 1px),
+      linear-gradient(90deg, var(--teal-accent) 1px, transparent 1px);
+    background-size:48px 48px;
+    opacity:0.08;
+    transform:perspective(500px) rotateX(60deg);
+    transform-origin:bottom;
+    mask-image:linear-gradient(to top, black, transparent);
+    -webkit-mask-image:linear-gradient(to top, black, transparent);
+    pointer-events:none;
+  }
+
+  /* floating particles */
+  .particle{
+    position:absolute;
+    border-radius:50%;
+    background:var(--teal-bright);
+    opacity:0.5;
+    filter:blur(1px);
+    animation:drift linear infinite;
+    pointer-events:none;
+  }
+  @keyframes drift{
+    0%{ transform:translateY(0) translateX(0); opacity:0; }
+    10%{ opacity:0.6; }
+    90%{ opacity:0.4; }
+    100%{ transform:translateY(-110vh) translateX(20px); opacity:0; }
+  }
+
+  /* radar ping top */
+  .radar{
+    position:relative;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:var(--teal-bright);
+    margin-bottom:28px;
+    box-shadow:0 0 12px var(--teal-bright);
+  }
+  .radar::before, .radar::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    border:1px solid var(--teal-accent);
+    animation:ping 2.4s cubic-bezier(0,0.4,0.6,1) infinite;
+    opacity:0;
+  }
+  .radar::after{ animation-delay:1.2s; }
+  @keyframes ping{
+    0%{ transform:scale(1); opacity:0.7; }
+    100%{ transform:scale(9); opacity:0; }
+  }
+
+  /* 3D 404 */
+  .scene{
+    transform-style:preserve-3d;
+    transition:transform 0.15s ease-out;
+    will-change:transform;
+  }
+
+  .digits{
+    display:flex;
+    gap:0.05em;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(5rem, 18vw, 13rem);
+    line-height:1;
+    letter-spacing:-0.02em;
+    transform-style:preserve-3d;
+  }
+
+  .digit{
+    position:relative;
+    color:var(--ink);
+    text-shadow:
+      0 1px 0 var(--teal-mid),
+      0 2px 0 var(--teal-mid),
+      0 3px 0 #0d4a44,
+      0 4px 0 #0d4a44,
+      0 6px 10px rgba(0,0,0,0.5),
+      0 0 40px rgba(79,235,212,0.35);
+    animation:float-digit 5s ease-in-out infinite;
+  }
+  .digit:nth-child(1){ animation-delay:0s; }
+  .digit:nth-child(2){ color:var(--teal-bright); animation-delay:0.3s;
+    text-shadow:
+      0 1px 0 #0e8477,
+      0 2px 0 #0e8477,
+      0 3px 0 #086158,
+      0 4px 0 #086158,
+      0 6px 14px rgba(0,0,0,0.5),
+      0 0 60px rgba(79,235,212,0.6);
+  }
+  .digit:nth-child(3){ animation-delay:0.6s; }
+
+  @keyframes float-digit{
+    0%, 100%{ transform:translateY(0); }
+    50%{ transform:translateY(-14px); }
+  }
+
+  .caption{
+    margin-top:1.75rem;
+    text-align:center;
+  }
+
+  .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--teal-bright);
+    font-weight:600;
+    margin-bottom:0.9rem;
+  }
+
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.5rem;
+    font-weight:500;
+    margin-bottom:0.6rem;
+    color:var(--ink);
+  }
+
+  p{
+    color:var(--ink-dim);
+    font-size:0.95rem;
+    max-width:360px;
+    margin:0 auto 2rem;
+    line-height:1.5;
+  }
+
+  .actions{
+    display:flex;
+    gap:0.75rem;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  .btn{
+    font-family:'Inter', sans-serif;
+    font-size:0.9rem;
+    font-weight:600;
+    padding:0.8rem 1.6rem;
+    border-radius:999px;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    text-decoration:none;
+    display:inline-block;
+  }
+
+  .btn-primary{
+    background:var(--teal-accent);
+    color:var(--teal-deep);
+    box-shadow:0 0 0 rgba(23,184,166,0);
+  }
+  .btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(23,184,166,0.4);
+    background:var(--teal-bright);
+  }
+
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink-dim);
+    border-color:rgba(143,184,178,0.35);
+  }
+  .btn-ghost:hover{
+    color:var(--ink);
+    border-color:var(--teal-bright);
+    transform:translateY(-2px);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .digit, .radar::before, .radar::after, .particle{ animation:none !important; }
+    .scene{ transition:none; }
+  }
+
+  @media (max-width:480px){
+    p{ padding:0 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+  <div class="grid-floor"></div>
+
+  <div class="radar"></div>
+
+  <div class="scene" id="scene">
+    <div class="digits">
+      <span class="digit">4</span><span class="digit">0</span><span class="digit">4</span>
+    </div>
+  </div>
+
+  <div class="caption">
+    <div class="eyebrow">Signal lost</div>
+    <h1>This page drifted off the map.</h1>
+    <p>Whatever you were looking for isn't broadcasting from this address anymore. Head back before you lose reception entirely.</p>
+    <div class="actions">
+      <a href="/" class="btn btn-primary">Back to home</a>
+      <a href="/" class="btn btn-ghost">Report this</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // parallax tilt on the 404 scene
+  const stage = document.getElementById('stage');
+  const scene = document.getElementById('scene');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if(!reduceMotion){
+    stage.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+      scene.style.transform = `rotateY(${x * 12}deg) rotateX(${-y * 10}deg)`;
+    });
+    stage.addEventListener('mouseleave', () => {
+      scene.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    });
+
+    // touch support
+    stage.addEventListener('touchmove', (e) => {
+      const touch = e.touches[0];
+      const x = (touch.clientX / window.innerWidth - 0.5) * 2;
+      const y = (touch.clientY / window.innerHeight - 0.5) * 2;
+      scene.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 8}deg)`;
+    }, {passive:true});
+  }
+
+  // generate floating particles
+  const stageEl = document.getElementById('stage');
+  const particleCount = reduceMotion ? 0 : 22;
+  for(let i=0; i<particleCount; i++){
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = 2 + Math.random() * 3;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.bottom = '-10px';
+    p.style.animationDuration = (8 + Math.random() * 10) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    stageEl.appendChild(p);
+  }
+</script>
+
+</body>
+</html>
