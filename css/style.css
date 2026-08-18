@@ -224,6 +224,40 @@
   .def-block p{font-size:16px;color:var(--text-2);max-width:760px;}
 
   .subpage-hero{padding:64px 0 56px;border-bottom:1px solid var(--line);}
+
+
+
+
+ /* New CTA design block */
+.geo-aeo-section{width:100%;min-height:650px;background:#fff;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+.geo-aeo-inner{width:90%;max-width:850px;}
+.geo-aeo-ai-icons{display:flex;align-items:center;justify-content:center;margin-bottom:28px;}
+.geo-aeo-ai{width:52px;height:52px;margin-left:-7px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.1);font:600 22px Arial,sans-serif;box-sizing:border-box;}
+.geo-aeo-ai:first-child{margin-left:0;}
+.geo-aeo-chatgpt{background:#ffffff;color:#fff;}
+.geo-aeo-claude{background:#f5eee7;color:#b85c32;font-family:Georgia,serif;}
+.geo-aeo-gemini{background:#fff;color:#4285f4;}
+.geo-aeo-copilot{background:#f5f7ff;color:#667eea;}
+.geo-aeo-perplexity{background:#fff;color:#20b99a;}
+.geo-aeo-eyebrow{margin-bottom:15px;font:500 9px/1.4 Arial,sans-serif;letter-spacing:.08em;color:#999;text-transform:uppercase;}
+.geo-aeo-title{margin:0;font:400 clamp(48px,6vw,76px)/.95 Georgia,"Sora",serif;letter-spacing:-.045em;color:#111;}
+.geo-aeo-description{max-width:500px;margin:24px auto;font:400 13px/1.55; font-family:'Sora',sans-serif;color:#666;}
+
+
+
+@media(max-width:600px){
+.geo-aeo-inner{width:92%;display:flex;flex-direction:column;align-items:center;}
+.geo-aeo-eyebrow{order:1;}
+.geo-aeo-title{order:2;font-size:43px;}
+.geo-aeo-description{order:3;max-width:320px;font-size:11px;}
+.geo-aeo-buttons{order:4;}
+.geo-aeo-ai-icons{order:5;margin:40px 0 0;transform:scale(.85);}
+}
+@media(max-width:400px){
+.geo-aeo-title{font-size:40px;}
+.geo-aeo-description{max-width:300px;}
+.geo-aeo-ai-icons{transform:scale(.78);margin-top:35px;}
+}
   .crumb{font-size:13px;color:var(--text-2);margin-bottom:18px;}
   .crumb a{color:var(--violet-500);font-weight:500;}
   .crumb a:hover{text-decoration:underline;}
