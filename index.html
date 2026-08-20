@@ -28,45 +28,91 @@
     })(window, document, "clarity", "script", "y18f6ftmg6");
 </script>
   
-<script type="application/ld+json">
+
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Citetail",
-  "url": "https://www.Citetail.com",
-  "logo": "https://www.Citetail.com/images/logo.png"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.citetail.com/#organization",
+      "name": "Citetail",
+      "url": "https://www.citetail.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.citetail.com/images/logo.png"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/Citetail",
+        "https://twitter.com/Citetail",
+        "https://www.crunchbase.com/organization/Citetail"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.citetail.com/#website",
+      "url": "https://www.citetail.com",
+      "name": "Citetail",
+      "publisher": { "@id": "https://www.citetail.com/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.citetail.com/#software",
+      "name": "Citetail",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://www.citetail.com",
+      "description": "Citetail is an AI visibility platform that audits domains, tracks citations across ChatGPT, Perplexity, Gemini and AI Overviews, finds relevant Reddit threads, and gives page-level content optimization guidance.",
+      "provider": { "@id": "https://www.citetail.com/#organization" },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Starter",
+          "price": "29",
+          "priceCurrency": "USD",
+          "url": "https://www.citetail.com/pricing",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "29",
+            "priceCurrency": "USD",
+            "billingDuration": "P1M"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Growth",
+          "price": "49",
+          "priceCurrency": "USD",
+          "url": "https://www.citetail.com/pricing",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "49",
+            "priceCurrency": "USD",
+            "billingDuration": "P1M"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro",
+          "price": "99",
+          "priceCurrency": "USD",
+          "url": "https://www.citetail.com/pricing",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "99",
+            "priceCurrency": "USD",
+            "billingDuration": "P1M"
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Citetail",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
-  "url": "https://Citetail.com",
-  "description": "Citetail is an AI visibility platform that audits domains, tracks citations across ChatGPT, Perplexity, Gemini and AI Overviews, finds relevant Reddit threads, and gives page-level content optimization guidance.",
-  "offers": [
-    { "@type": "Offer", "name": "Starter", "price": "29", "priceCurrency": "USD" },
-    { "@type": "Offer", "name": "Growth", "price": "49", "priceCurrency": "USD" },
-    { "@type": "Offer", "name": "Pro", "price": "99", "priceCurrency": "USD" }
-  ],
-  "provider": {
-    "@type": "Organization",
-    "name": "Citetail",
-    "url": "https://Citetail.com",
-    "logo": "https://Citetail.com/logo.png",
-    "sameAs": [
-      "https://www.linkedin.com/company/Citetail",
-      "https://twitter.com/Citetail",
-      "https://www.crunchbase.com/organization/Citetail",
+    
 
-      
-    ]
-  }
-}
-</script>
+
   
 </head>
 <body>
