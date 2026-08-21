@@ -8,14 +8,11 @@ media_folder: "images/blog"
 public_folder: "/images/blog"
 
 collections:
-  - name: "posts"
+  - name: "post"
     label: "Blog Posts"
-    folder: "content/posts"
+    folder: "blog"
     create: true
-
-    # File name will use the URL Slug field
     slug: "{{fields.slug}}"
-
     extension: "md"
     format: "frontmatter"
 
@@ -27,7 +24,6 @@ collections:
       - label: "URL Slug"
         name: "slug"
         widget: "string"
-        hint: "Example: state-of-ai-citations-2026"
 
       - label: "Publish Date"
         name: "date"
@@ -49,6 +45,10 @@ collections:
       - label: "Meta Description"
         name: "metaDescription"
         widget: "text"
+
+      - label: "Blog Content"
+        name: "body"
+        widget: "markdown"
 
       - label: "Blog Content"
         name: "body"
