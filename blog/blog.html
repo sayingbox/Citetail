@@ -6,79 +6,643 @@
 
     <title>CiteTail Blog</title>
 
-    <!-- Markdown parser -->
+    <meta name="description" id="meta-description" content="">
+
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+
+        /* =========================================
+           CITE TAIL BLOG
+           ========================================= */
+
+        :root {
+            --bg: #f7f7f3;
+            --surface: #ffffff;
+            --text: #111111;
+            --muted: #6f716c;
+            --border: #dedfd9;
+            --accent: #a8ff3e;
+            --accent-dark: #7fc91f;
+            --max-width: 1180px;
+            --article-width: 760px;
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =========================================
+           HEADER
+           ========================================= */
+
+        .blog-header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(247, 247, 243, 0.96);
+        }
+
+
+        .header-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 22px 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+
+
+        .logo span {
+            font-weight: 400;
+        }
+
+
+        .back-link {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+
+        .back-link:hover {
+            color: var(--text);
+        }
+
+
+        /* =========================================
+           ARTICLE HERO
+           ========================================= */
+
+        .article-hero {
+            max-width: var(--article-width);
+            margin: 0 auto;
+            padding: 100px 24px 65px;
+        }
+
+
+        .category {
+            display: inline-block;
+
+            margin-bottom: 24px;
+
+            padding: 6px 11px;
+
+            border: 1px solid var(--border);
+            border-radius: 4px;
+
+            background: var(--accent);
+
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+
+        .article-title {
+            margin: 0;
+
+            font-size: clamp(42px, 6vw, 76px);
+            line-height: 0.98;
+            letter-spacing: -0.055em;
+            font-weight: 700;
+        }
+
+
+        .article-description {
+            margin: 28px 0 0;
+
+            max-width: 680px;
+
+            font-size: 20px;
+            line-height: 1.55;
+
+            color: var(--muted);
+        }
+
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-top: 32px;
+
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+
+        .meta-dot {
+            width: 4px;
+            height: 4px;
+
+            border-radius: 50%;
+
+            background: var(--muted);
+        }
+
+
+        /* =========================================
+           ARTICLE
+           ========================================= */
+
+        .article-layout {
+            max-width: var(--max-width);
+            margin: 0 auto;
+
+            padding: 0 32px 120px;
+
+            display: grid;
+            grid-template-columns: 180px minmax(0, var(--article-width));
+            gap: 70px;
+            justify-content: center;
+        }
+
+
+        /* =========================================
+           ARTICLE SIDEBAR
+           ========================================= */
+
+        .article-sidebar {
+            padding-top: 10px;
+        }
+
+
+        .sidebar-label {
+            margin-bottom: 14px;
+
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+
+            color: var(--muted);
+        }
+
+
+        .sidebar-line {
+            width: 40px;
+            height: 2px;
+
+            margin-bottom: 20px;
+
+            background: var(--accent-dark);
+        }
+
+
+        .sidebar-text {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+
+        /* =========================================
+           MARKDOWN CONTENT
+           ========================================= */
+
+        .article-content {
+            min-width: 0;
+        }
+
+
+        .article-content > *:first-child {
+            margin-top: 0;
+        }
+
+
+        .article-content p {
+            margin: 0 0 25px;
+
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+
+        .article-content h2 {
+            margin: 65px 0 22px;
+
+            font-size: 34px;
+            line-height: 1.1;
+            letter-spacing: -0.035em;
+        }
+
+
+        .article-content h3 {
+            margin: 45px 0 16px;
+
+            font-size: 24px;
+            line-height: 1.2;
+            letter-spacing: -0.025em;
+        }
+
+
+        .article-content h4 {
+            margin: 35px 0 14px;
+
+            font-size: 19px;
+        }
+
+
+        .article-content ul,
+        .article-content ol {
+            margin: 0 0 30px;
+            padding-left: 25px;
+        }
+
+
+        .article-content li {
+            margin-bottom: 10px;
+
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+
+        .article-content strong {
+            font-weight: 700;
+        }
+
+
+        .article-content em {
+            color: var(--muted);
+        }
+
+
+        .article-content a {
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+        }
+
+
+        .article-content blockquote {
+            margin: 40px 0;
+
+            padding: 10px 0 10px 25px;
+
+            border-left: 3px solid var(--accent-dark);
+
+            font-size: 21px;
+            line-height: 1.6;
+        }
+
+
+        .article-content code {
+            padding: 3px 6px;
+
+            border: 1px solid var(--border);
+            border-radius: 4px;
+
+            background: #eeeeea;
+
+            font-size: 14px;
+        }
+
+
+        .article-content pre {
+            overflow-x: auto;
+
+            margin: 35px 0;
+            padding: 25px;
+
+            border: 1px solid var(--border);
+            border-radius: 6px;
+
+            background: #111111;
+            color: #ffffff;
+        }
+
+
+        .article-content pre code {
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: inherit;
+        }
+
+
+        .article-content img {
+            display: block;
+
+            max-width: 100%;
+            height: auto;
+
+            margin: 40px 0;
+
+            border-radius: 6px;
+        }
+
+
+        .article-content hr {
+            margin: 55px 0;
+
+            border: 0;
+            border-top: 1px solid var(--border);
+        }
+
+
+        /* =========================================
+           TABLES
+           ========================================= */
+
+        .article-content table {
+            width: 100%;
+            margin: 40px 0;
+
+            border-collapse: collapse;
+
+            font-size: 15px;
+        }
+
+
+        .article-content th,
+        .article-content td {
+            padding: 13px 15px;
+
+            border: 1px solid var(--border);
+
+            text-align: left;
+        }
+
+
+        .article-content th {
+            background: #eeeeea;
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+
+        .article-footer {
+            max-width: var(--article-width);
+            margin: 0 auto;
+
+            padding: 35px 24px 70px;
+
+            border-top: 1px solid var(--border);
+        }
+
+
+        .footer-category {
+            display: inline-block;
+
+            margin-bottom: 15px;
+
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+
+        .footer-title {
+            margin: 0;
+
+            font-size: 24px;
+            letter-spacing: -0.03em;
+        }
+
+
+        /* =========================================
+           ERROR
+           ========================================= */
+
+        .error {
+            max-width: var(--article-width);
+            margin: 100px auto;
+            padding: 24px;
+        }
+
+
+        /* =========================================
+           MOBILE
+           ========================================= */
+
+        @media (max-width: 800px) {
+
+            .header-inner {
+                padding: 18px 20px;
+            }
+
+
+            .article-hero {
+                padding: 65px 20px 45px;
+            }
+
+
+            .article-title {
+                font-size: 46px;
+            }
+
+
+            .article-description {
+                font-size: 18px;
+            }
+
+
+            .article-layout {
+                display: block;
+
+                padding: 0 20px 80px;
+            }
+
+
+            .article-sidebar {
+                display: none;
+            }
+
+
+            .article-content p,
+            .article-content li {
+                font-size: 17px;
+            }
+
+
+            .article-content h2 {
+                font-size: 30px;
+            }
+
+
+            .article-content h3 {
+                font-size: 23px;
+            }
+
+
+            .article-footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-    <h1 id="title">Loading...</h1>
 
-    <p>
-        <strong>Slug:</strong>
-        <span id="slug"></span>
-    </p>
+    <!-- =========================================
+         HEADER
+         ========================================= -->
 
-    <p>
-        <strong>Category:</strong>
-        <span id="category"></span>
-    </p>
+    <header class="blog-header">
 
-    <p>
-        <strong>Date:</strong>
-        <span id="date"></span>
-    </p>
+        <div class="header-inner">
 
-    <p>
-        <strong>Meta Title:</strong>
-        <span id="metaTitle"></span>
-    </p>
+            <a href="/" class="logo">
+                Cite<span>Tail</span>
+            </a>
 
-    <p>
-        <strong>Meta Description:</strong>
-        <span id="metaDescription"></span>
-    </p>
+            <a href="/blog" class="back-link">
+                ← All posts
+            </a>
 
-    <hr>
+        </div>
 
-    <h2>Blog Content</h2>
+    </header>
 
-    <div id="content">
-        Loading content...
-    </div>
+
+    <!-- =========================================
+         ARTICLE HERO
+         ========================================= -->
+
+    <section class="article-hero">
+
+        <div id="category" class="category">
+            Blog
+        </div>
+
+
+        <h1 id="title" class="article-title">
+            Loading...
+        </h1>
+
+
+        <p id="metaDescription" class="article-description">
+        </p>
+
+
+        <div class="article-meta">
+
+            <span id="date">
+                —
+            </span>
+
+            <span class="meta-dot"></span>
+
+            <span>
+                CiteTail
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         ARTICLE BODY
+         ========================================= -->
+
+    <main class="article-layout">
+
+
+        <aside class="article-sidebar">
+
+            <div class="sidebar-label">
+                Article
+            </div>
+
+            <div class="sidebar-line"></div>
+
+            <div class="sidebar-text">
+
+                Insights on SEO, GEO,
+                AEO and AI visibility.
+
+            </div>
+
+        </aside>
+
+
+        <article
+            id="content"
+            class="article-content"
+        >
+
+            Loading content...
+
+        </article>
+
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer class="article-footer">
+
+        <div class="footer-category">
+            CiteTail
+        </div>
+
+        <h3 class="footer-title">
+            Be the answer AI gives first.
+        </h3>
+
+    </footer>
 
 
     <script>
 
-        /*
-        =====================================================
-        GET SLUG FROM URL
-        =====================================================
-
-        Supported URLs:
-
-        /blog/seo-vs-geo
-        /case-study/seo-vs-geo
-        /report/seo-vs-geo
-        /guide/seo-vs-geo
-
-        All URLs load:
-
-        /content/posts/seo-vs-geo.md
-        */
-
+        /* =========================================
+           GET SLUG
+           ========================================= */
 
         function getSlugFromUrl() {
 
-            const path =
-                window.location.pathname;
-
             const parts =
-                path
+                window.location.pathname
                     .split("/")
                     .filter(Boolean);
 
-            if (parts.length === 0) {
+            if (!parts.length) {
                 return "";
             }
 
@@ -87,85 +651,71 @@
         }
 
 
-        /*
-        =====================================================
-        GET URL CATEGORY
-        =====================================================
-        */
+        /* =========================================
+           FRONTMATTER PARSER
+           ========================================= */
 
-        function getUrlCategory() {
+        function parseFrontmatter(text) {
 
-            const path =
-                window.location.pathname;
+            const data = {};
 
-            const parts =
-                path
-                    .split("/")
-                    .filter(Boolean);
+            text.split("\n").forEach(line => {
 
-            if (parts.length < 2) {
-                return "blog";
-            }
+                const separator =
+                    line.indexOf(":");
 
-            return parts[parts.length - 2];
+                if (separator === -1) {
+                    return;
+                }
+
+                const key =
+                    line
+                        .substring(0, separator)
+                        .trim();
+
+                let value =
+                    line
+                        .substring(separator + 1)
+                        .trim();
+
+                value =
+                    value.replace(
+                        /^["']|["']$/g,
+                        ""
+                    );
+
+                data[key] = value;
+
+            });
+
+            return data;
 
         }
 
 
-        /*
-        =====================================================
-        LOAD BLOG POST
-        =====================================================
-        */
+        /* =========================================
+           LOAD BLOG
+           ========================================= */
 
         async function loadBlogPost() {
 
             const slug =
                 getSlugFromUrl();
 
-            const urlCategory =
-                getUrlCategory();
-
 
             if (!slug) {
 
                 document.getElementById("title")
                     .textContent =
-                    "No blog slug found";
+                    "Blog post not found";
 
                 return;
 
             }
 
 
-            /*
-            IMPORTANT:
-
-            Pages CMS saves posts here:
-
-            content/posts/
-
-            Therefore every blog post is loaded from:
-
-            /content/posts/{slug}.md
-            */
-
-
             const postUrl =
                 `/content/posts/${slug}.md`;
-
-
-            console.log("Current URL:",
-                window.location.pathname);
-
-            console.log("URL Category:",
-                urlCategory);
-
-            console.log("Slug:",
-                slug);
-
-            console.log("Markdown file:",
-                postUrl);
 
 
             try {
@@ -177,8 +727,7 @@
                 if (!response.ok) {
 
                     throw new Error(
-                        "Could not find blog post: " +
-                        postUrl
+                        "Blog post not found"
                     );
 
                 }
@@ -188,18 +737,6 @@
                     await response.text();
 
 
-                console.log(
-                    "Markdown:",
-                    markdown
-                );
-
-
-                /*
-                =================================================
-                PARSE FRONTMATTER
-                =================================================
-                */
-
                 const frontmatterMatch =
                     markdown.match(
                         /^---\s*([\s\S]*?)\s*---/
@@ -207,7 +744,6 @@
 
 
                 let frontmatter = {};
-
                 let content = markdown;
 
 
@@ -230,25 +766,18 @@
                 }
 
 
-                /*
-                =================================================
-                DISPLAY BLOG INFORMATION
-                =================================================
-                */
+                /* =================================
+                   PAGE DATA
+                   ================================= */
 
                 const title =
                     frontmatter.title ||
-                    "No title";
-
-
-                const postSlug =
-                    frontmatter.slug ||
-                    slug;
+                    "CiteTail Blog";
 
 
                 const category =
                     frontmatter.category ||
-                    "";
+                    "Blog";
 
 
                 const date =
@@ -256,24 +785,18 @@
                     "";
 
 
-                const metaTitle =
-                    frontmatter.metaTitle ||
-                    "";
-
-
-                const metaDescription =
+                const description =
                     frontmatter.metaDescription ||
                     "";
 
 
+                /* =================================
+                   INSERT DATA
+                   ================================= */
+
                 document.getElementById("title")
                     .textContent =
                     title;
-
-
-                document.getElementById("slug")
-                    .textContent =
-                    postSlug;
 
 
                 document.getElementById("category")
@@ -283,71 +806,35 @@
 
                 document.getElementById("date")
                     .textContent =
-                    date;
+                    formatDate(date);
 
 
-                document.getElementById("metaTitle")
-                    .textContent =
-                    metaTitle;
+                document.getElementById(
+                    "metaDescription"
+                ).textContent =
+                    description;
 
 
-                document.getElementById("metaDescription")
-                    .textContent =
-                    metaDescription;
-
-
-                /*
-                =================================================
-                SET PAGE SEO TITLE
-                =================================================
-                */
+                /* =================================
+                   SEO
+                   ================================= */
 
                 document.title =
-                    metaTitle ||
-                    title ||
-                    "CiteTail Blog";
+                    frontmatter.metaTitle ||
+                    title;
 
 
-                /*
-                =================================================
-                SET META DESCRIPTION
-                =================================================
-                */
-
-                let descriptionTag =
-                    document.querySelector(
-                        'meta[name="description"]'
-                    );
-
-
-                if (!descriptionTag) {
-
-                    descriptionTag =
-                        document.createElement("meta");
-
-                    descriptionTag.setAttribute(
-                        "name",
-                        "description"
-                    );
-
-                    document.head.appendChild(
-                        descriptionTag
-                    );
-
-                }
-
-
-                descriptionTag.setAttribute(
+                document.getElementById(
+                    "meta-description"
+                ).setAttribute(
                     "content",
-                    metaDescription
+                    description
                 );
 
 
-                /*
-                =================================================
-                CONVERT MARKDOWN → HTML
-                =================================================
-                */
+                /* =================================
+                   MARKDOWN
+                   ================================= */
 
                 document.getElementById("content")
                     .innerHTML =
@@ -356,154 +843,54 @@
 
             } catch (error) {
 
-                console.error(
-                    "Blog loading error:",
-                    error
-                );
-
+                console.error(error);
 
                 document.getElementById("title")
                     .textContent =
                     "Blog post not found";
 
-
                 document.getElementById("content")
                     .textContent =
-                    error.message;
+                    "We couldn't find this article.";
 
             }
 
         }
 
 
-        /*
-        =====================================================
-        BLOG URL LOGIC
-        =====================================================
+        /* =========================================
+           DATE
+           ========================================= */
 
-        Category:
+        function formatDate(date) {
 
-        case study → /case-study/post
-        report     → /report/post
-        guide      → /guide/post
-
-        Everything else:
-
-        → /blog/post
-        */
-
-
-        function getPostUrl(post) {
-
-            const category =
-                (post.category || "")
-                    .toLowerCase()
-                    .trim();
-
-
-            const slug =
-                post.slug;
-
-
-            if (category === "case study") {
-
-                return `/case-study/${slug}`;
-
+            if (!date) {
+                return "";
             }
 
+            const parsed =
+                new Date(date);
 
-            if (category === "report") {
-
-                return `/report/${slug}`;
-
+            if (isNaN(parsed)) {
+                return date;
             }
 
-
-            if (category === "guide") {
-
-                return `/guide/${slug}`;
-
-            }
-
-
-            return `/blog/${slug}`;
+            return parsed.toLocaleDateString(
+                "en-US",
+                {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                }
+            );
 
         }
 
-
-        /*
-        =====================================================
-        PARSE PAGES CMS FRONTMATTER
-        =====================================================
-        */
-
-        function parseFrontmatter(text) {
-
-            const data = {};
-
-
-            text.split("\n")
-                .forEach(line => {
-
-                    const separator =
-                        line.indexOf(":");
-
-
-                    if (separator === -1) {
-
-                        return;
-
-                    }
-
-
-                    const key =
-                        line
-                            .substring(
-                                0,
-                                separator
-                            )
-                            .trim();
-
-
-                    let value =
-                        line
-                            .substring(
-                                separator + 1
-                            )
-                            .trim();
-
-
-                    /*
-                    Remove surrounding quotes
-                    */
-
-                    value =
-                        value.replace(
-                            /^["']|["']$/g,
-                            ""
-                        );
-
-
-                    data[key] =
-                        value;
-
-                });
-
-
-            return data;
-
-        }
-
-
-        /*
-        =====================================================
-        START
-        =====================================================
-        */
 
         loadBlogPost();
 
     </script>
+
 
 </body>
 </html>
