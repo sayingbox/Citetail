@@ -1,5 +1,5 @@
 ---
-title: Case Study
+title: Case Study 2
 slug: demo-2
 date: 2026-08-22
 category: case study
