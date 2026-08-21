@@ -7,7 +7,9 @@ content:
     label: Blog Posts
     type: collection
     path: content/posts
+
     filename: "{slug}.md"
+
     format: yaml-frontmatter
 
     view:
