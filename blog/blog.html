@@ -194,6 +194,28 @@
         }
 
 
+
+
+        function getPostUrl(post) {
+    const category = (post.category || "").toLowerCase().trim();
+    const slug = post.slug;
+
+    if (category === "case study") {
+        return `/case-study/${slug}`;
+    }
+
+    if (category === "report") {
+        return `/report/${slug}`;
+    }
+
+    if (category === "guide") {
+        return `/guide/${slug}`;
+    }
+
+    return `/blog/${slug}`;
+}
+
+
         function parseFrontmatter(text) {
 
             const data = {};
@@ -239,6 +261,28 @@
             return data;
 
         }
+
+
+
+
+        function getPostUrl(post) {
+    const category = (post.category || "").toLowerCase().trim();
+    const slug = post.slug;
+
+    if (category === "case study") {
+        return `/case-study/${slug}`;
+    }
+
+    if (category === "report") {
+        return `/report/${slug}`;
+    }
+
+    if (category === "guide") {
+        return `/guide/${slug}`;
+    }
+
+    return `/blog/${slug}`;
+}
 
 
         loadBlogPost();
