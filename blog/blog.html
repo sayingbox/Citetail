@@ -4,15 +4,13 @@
 async function loadBlogPost() {
     const path = window.location.pathname;
     const parts = path.split("/").filter(Boolean);
-
-    // /blog/seo-vs-geo
     const slug = parts[parts.length - 1];
 
     if (!slug || slug === "blog") {
         return;
     }
 
-    const postUrl = `/content/post/${slug}.md`;
+    const postUrl = `/content/posts/${slug}.md`;
 
     try {
         const response = await fetch(postUrl);
@@ -23,10 +21,10 @@ async function loadBlogPost() {
 
         const markdown = await response.text();
 
-        // Remove frontmatter
-        const content = markdown.replace(/^---[\s\S]*?---/, "").trim();
+        const content = markdown
+            .replace(/^---[\s\S]*?---/, "")
+            .trim();
 
-        // Render Markdown
         document.getElementById("blog-content").innerHTML =
             marked.parse(content);
 
