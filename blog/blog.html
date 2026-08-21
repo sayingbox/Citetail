@@ -1,28 +1,42 @@
-<div id="blog-content"></div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <script>
 async function loadBlogPost() {
     const path = window.location.pathname;
-    const slug = path.split("/").filter(Boolean).pop();
+    const parts = path.split("/").filter(Boolean);
+
+    // /blog/seo-vs-geo
+    const slug = parts[parts.length - 1];
 
     if (!slug || slug === "blog") {
         return;
     }
 
+    const postUrl = `/content/post/${slug}.md`;
+
     try {
-        const response = await fetch(`/content/post/${slug}.md`);
+        const response = await fetch(postUrl);
 
         if (!response.ok) {
-            throw new Error("Post not found");
+            throw new Error(`Markdown file not found: ${postUrl}`);
         }
 
         const markdown = await response.text();
 
-        document.getElementById("blog-content").innerHTML = markdown;
+        // Remove frontmatter
+        const content = markdown.replace(/^---[\s\S]*?---/, "").trim();
+
+        // Render Markdown
+        document.getElementById("blog-content").innerHTML =
+            marked.parse(content);
+
     } catch (error) {
         console.error(error);
-        document.getElementById("blog-content").innerHTML =
-            "<h1>Blog post not found</h1>";
+
+        document.getElementById("blog-content").innerHTML = `
+            <h1>Blog post not found</h1>
+            <p>Could not load: ${postUrl}</p>
+        `;
     }
 }
 
