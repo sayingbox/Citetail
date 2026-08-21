@@ -1,1 +1,51 @@
+backend:
+  name: github
+  repo: sayingbox/Citetail
+  branch: main
+  auth_methods: [token]
 
+media_folder: "images/blog"
+public_folder: "/images/blog"
+
+collections:
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+
+    fields:
+      - label: "Blog Title"
+        name: "title"
+        widget: "string"
+
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+
+      - label: "Featured Image"
+        name: "image"
+        widget: "image"
+        required: false
+
+      - label: "Category"
+        name: "category"
+        widget: "string"
+
+      - label: "Meta Title"
+        name: "metaTitle"
+        widget: "string"
+
+      - label: "Meta Description"
+        name: "metaDescription"
+        widget: "text"
+
+      - label: "Blog Content"
+        name: "body"
+        widget: "markdown"
