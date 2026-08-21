@@ -1,8 +1,8 @@
 ---
 title: 'State of AI Citations 2026: What the Data Says About How ChatGPT, Claude, Perplexity, and Gemini Choose Their Sources'
 slug: state-of-ai-citations-2026
-date: 2026-08-21T17:03
-image: ''
+date: 2026-08-21T23:01
+image: /images/blog/preview.png
 category: Research
 metaTitle: 'State of AI Citations 2026: How LLMs Cite Brand'
 metaDescription: What the State of AI Citations 2026 data reveals about how ChatGPT, Claude, Perplexity & Gemini choose sources and how to earn AI citations in 2026.
