@@ -8,7 +8,7 @@ content:
     type: collection
     path: content/posts
 
-    filename: "{slug}.md"
+    filename: "{fields.slug}.md"
 
     format: yaml-frontmatter
 
@@ -27,6 +27,7 @@ content:
         label: URL Slug
         type: string
         required: true
+        pattern: "^[a-z0-9-]+$"
 
       - name: date
         label: Publish Date
