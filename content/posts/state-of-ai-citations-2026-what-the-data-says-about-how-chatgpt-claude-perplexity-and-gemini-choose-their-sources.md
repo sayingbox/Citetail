@@ -8,7 +8,7 @@ metaTitle: 'State of AI Citations 2026: How LLMs Cite Brand'
 metaDescription: What the State of AI Citations 2026 data reveals about how ChatGPT, Claude, Perplexity & Gemini choose sources and how to earn AI citations in 2026.
 ---
 
-The State of AI Citations 2026 research shows that AI platforms no longer share a single playbook for choosing sources. Wikipedia dominates ChatGPT, Reddit dominates Perplexity, Google favors its own properties, and Claude leans on cautious, well-attributed content. Only about 11% of domains get cited by both ChatGPT and Perplexity, and just 12% of AI citations overlap with a page's Google top-10 ranking — meaning ranking well in search no longer guarantees visibility inside AI answers.
+The State of AI Citations 2026 research shows that AI platforms no longer share a single playbook for choosing sources. Wikipedia dominates ChatGPT, Reddit dominates Perplexity, Google favors its own properties, and Claude leans on cautious, well-attributed content. Only about 11% of domains get cited by both ChatGPT and Perplexity, and just 12% of AI citations overlap with a page's Google top-10 ranking, meaning ranking well in search no longer guarantees visibility inside AI answers.
 
 If you've searched for anything and gotten a synthesized answer instead of ten blue links, you've already felt the shift this report puts numbers to. Being "cited" by an AI system is quickly becoming as important to a brand's visibility as ranking on page one ever was — and in 2026, it runs on completely different rules.
 
