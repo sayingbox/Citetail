@@ -50,38 +50,81 @@
 
     <script>
 
+        /*
+        =====================================================
+        GET SLUG FROM URL
+        =====================================================
+
+        Supported URLs:
+
+        /blog/seo-vs-geo
+        /case-study/seo-vs-geo
+        /report/seo-vs-geo
+        /guide/seo-vs-geo
+
+        All URLs load:
+
+        /content/posts/seo-vs-geo.md
+        */
+
+
+        function getSlugFromUrl() {
+
+            const path =
+                window.location.pathname;
+
+            const parts =
+                path
+                    .split("/")
+                    .filter(Boolean);
+
+            if (parts.length === 0) {
+                return "";
+            }
+
+            return parts[parts.length - 1];
+
+        }
+
+
+        /*
+        =====================================================
+        GET URL CATEGORY
+        =====================================================
+        */
+
+        function getUrlCategory() {
+
+            const path =
+                window.location.pathname;
+
+            const parts =
+                path
+                    .split("/")
+                    .filter(Boolean);
+
+            if (parts.length < 2) {
+                return "blog";
+            }
+
+            return parts[parts.length - 2];
+
+        }
+
+
+        /*
+        =====================================================
+        LOAD BLOG POST
+        =====================================================
+        */
+
         async function loadBlogPost() {
 
-            /*
-                Supported URLs:
+            const slug =
+                getSlugFromUrl();
 
-                /blog/seo-vs-geo
-                /case-study/seo-vs-geo
-                /report/seo-vs-geo
-                /guide/seo-vs-geo
-
-                All of them load:
-
-                /content/posts/seo-vs-geo.md
-            */
-
-
-            const path = window.location.pathname;
-
-            const parts = path
-                .split("/")
-                .filter(Boolean);
-
-
-            // Get the last part of the URL
-            const slug = parts[parts.length - 1];
-
-
-            // Get category/path type
             const urlCategory =
-                parts.length > 1
-                    ? parts[parts.length - 2]
-                    : "";
+                getUrlCategory();
 
 
             if (!slug) {
@@ -91,23 +134,38 @@
                     "No blog slug found";
 
                 return;
+
             }
 
 
             /*
-                Markdown files are always stored here:
+            IMPORTANT:
 
-                /content/posts/{slug}.md
+            Pages CMS saves posts here:
+
+            content/posts/
+
+            Therefore every blog post is loaded from:
+
+            /content/posts/{slug}.md
             */
+
 
             const postUrl =
                 `/content/posts/${slug}.md`;
 
 
-            console.log("Current URL:", path);
-            console.log("URL Category:", urlCategory);
-            console.log("Slug:", slug);
-            console.log("Markdown:", postUrl);
+            console.log("Current URL:",
+                window.location.pathname);
+
+            console.log("URL Category:",
+                urlCategory);
+
+            console.log("Slug:",
+                slug);
+
+            console.log("Markdown file:",
+                postUrl);
 
 
             try {
@@ -119,7 +177,8 @@
                 if (!response.ok) {
 
                     throw new Error(
-                        "Could not find " + postUrl
+                        "Could not find blog post: " +
+                        postUrl
                     );
 
                 }
@@ -136,8 +195,9 @@
 
 
                 /*
-                    Separate frontmatter
-                    from Markdown content
+                =================================================
+                PARSE FRONTMATTER
+                =================================================
                 */
 
                 const frontmatterMatch =
@@ -171,47 +231,122 @@
 
 
                 /*
-                    Display frontmatter
+                =================================================
+                DISPLAY BLOG INFORMATION
+                =================================================
                 */
 
-                document.getElementById("title")
-                    .textContent =
+                const title =
                     frontmatter.title ||
                     "No title";
 
 
-                document.getElementById("slug")
-                    .textContent =
+                const postSlug =
                     frontmatter.slug ||
                     slug;
 
 
-                document.getElementById("category")
-                    .textContent =
+                const category =
                     frontmatter.category ||
                     "";
 
 
-                document.getElementById("date")
-                    .textContent =
+                const date =
                     frontmatter.date ||
                     "";
 
 
-                document.getElementById("metaTitle")
-                    .textContent =
+                const metaTitle =
                     frontmatter.metaTitle ||
                     "";
 
 
-                document.getElementById("metaDescription")
-                    .textContent =
+                const metaDescription =
                     frontmatter.metaDescription ||
                     "";
 
 
+                document.getElementById("title")
+                    .textContent =
+                    title;
+
+
+                document.getElementById("slug")
+                    .textContent =
+                    postSlug;
+
+
+                document.getElementById("category")
+                    .textContent =
+                    category;
+
+
+                document.getElementById("date")
+                    .textContent =
+                    date;
+
+
+                document.getElementById("metaTitle")
+                    .textContent =
+                    metaTitle;
+
+
+                document.getElementById("metaDescription")
+                    .textContent =
+                    metaDescription;
+
+
                 /*
-                    Convert Markdown into HTML
+                =================================================
+                SET PAGE SEO TITLE
+                =================================================
+                */
+
+                document.title =
+                    metaTitle ||
+                    title ||
+                    "CiteTail Blog";
+
+
+                /*
+                =================================================
+                SET META DESCRIPTION
+                =================================================
+                */
+
+                let descriptionTag =
+                    document.querySelector(
+                        'meta[name="description"]'
+                    );
+
+
+                if (!descriptionTag) {
+
+                    descriptionTag =
+                        document.createElement("meta");
+
+                    descriptionTag.setAttribute(
+                        "name",
+                        "description"
+                    );
+
+                    document.head.appendChild(
+                        descriptionTag
+                    );
+
+                }
+
+
+                descriptionTag.setAttribute(
+                    "content",
+                    metaDescription
+                );
+
+
+                /*
+                =================================================
+                CONVERT MARKDOWN → HTML
+                =================================================
                 */
 
                 document.getElementById("content")
@@ -221,7 +356,10 @@
 
             } catch (error) {
 
-                console.error(error);
+                console.error(
+                    "Blog loading error:",
+                    error
+                );
 
 
                 document.getElementById("title")
@@ -238,21 +376,22 @@
         }
 
 
-
         /*
-            URL logic
+        =====================================================
+        BLOG URL LOGIC
+        =====================================================
 
-            ONLY these categories get
-            their own URL:
+        Category:
 
-            case study → /case-study/post
-            report     → /report/post
-            guide      → /guide/post
+        case study → /case-study/post
+        report     → /report/post
+        guide      → /guide/post
 
-            Everything else:
+        Everything else:
 
-            → /blog/post
+        → /blog/post
         */
+
 
         function getPostUrl(post) {
 
@@ -287,15 +426,15 @@
             }
 
 
-            // Default URL
             return `/blog/${slug}`;
 
         }
 
 
-
         /*
-            Parse Markdown frontmatter
+        =====================================================
+        PARSE PAGES CMS FRONTMATTER
+        =====================================================
         */
 
         function parseFrontmatter(text) {
@@ -303,48 +442,52 @@
             const data = {};
 
 
-            text.split("\n").forEach(line => {
+            text.split("\n")
+                .forEach(line => {
 
-                const separator =
-                    line.indexOf(":");
-
-
-                if (separator === -1) {
-
-                    return;
-
-                }
+                    const separator =
+                        line.indexOf(":");
 
 
-                const key =
-                    line
-                        .substring(
-                            0,
-                            separator
-                        )
-                        .trim();
+                    if (separator === -1) {
+
+                        return;
+
+                    }
 
 
-                let value =
-                    line
-                        .substring(
-                            separator + 1
-                        )
-                        .trim();
+                    const key =
+                        line
+                            .substring(
+                                0,
+                                separator
+                            )
+                            .trim();
 
 
-                // Remove quotes
+                    let value =
+                        line
+                            .substring(
+                                separator + 1
+                            )
+                            .trim();
 
-                value =
-                    value.replace(
-                        /^["']|["']$/g,
-                        ""
-                    );
+
+                    /*
+                    Remove surrounding quotes
+                    */
+
+                    value =
+                        value.replace(
+                            /^["']|["']$/g,
+                            ""
+                        );
 
 
-                data[key] = value;
+                    data[key] =
+                        value;
 
-            });
+                });
 
 
             return data;
@@ -352,8 +495,11 @@
         }
 
 
-
-        // Load the post
+        /*
+        =====================================================
+        START
+        =====================================================
+        */
 
         loadBlogPost();
 
