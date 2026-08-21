@@ -12,7 +12,10 @@ collections:
     label: "Blog Posts"
     folder: "content/posts"
     create: true
-    slug: "{{slug}}"
+
+    # File name will use the URL Slug field
+    slug: "{{fields.slug}}"
+
     extension: "md"
     format: "frontmatter"
 
@@ -24,6 +27,7 @@ collections:
       - label: "URL Slug"
         name: "slug"
         widget: "string"
+        hint: "Example: state-of-ai-citations-2026"
 
       - label: "Publish Date"
         name: "date"
