@@ -1,1 +1,30 @@
+<div id="blog-content"></div>
 
+<script>
+async function loadBlogPost() {
+    const path = window.location.pathname;
+    const slug = path.split("/").filter(Boolean).pop();
+
+    if (!slug || slug === "blog") {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/content/post/${slug}.md`);
+
+        if (!response.ok) {
+            throw new Error("Post not found");
+        }
+
+        const markdown = await response.text();
+
+        document.getElementById("blog-content").innerHTML = markdown;
+    } catch (error) {
+        console.error(error);
+        document.getElementById("blog-content").innerHTML =
+            "<h1>Blog post not found</h1>";
+    }
+}
+
+loadBlogPost();
+</script>
