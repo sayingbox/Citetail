@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>CiteTail Blog</title>
 
-    <meta name="description" id="meta-description" content="">
+    <meta
+        name="description"
+        id="meta-description"
+        content=""
+    >
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-    <style>
 
-        /* =========================================
-           CITE TAIL BLOG
-           ========================================= */
+    <style>
 
         :root {
             --bg: #f7f7f3;
-            --surface: #ffffff;
             --text: #111111;
             --muted: #6f716c;
             --border: #dedfd9;
             --accent: #a8ff3e;
-            --accent-dark: #7fc91f;
-            --max-width: 1180px;
-            --article-width: 760px;
         }
 
 
@@ -34,16 +34,19 @@
         }
 
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-
         body {
             margin: 0;
+
             background: var(--bg);
+
             color: var(--text);
-            font-family: Inter, Arial, Helvetica, sans-serif;
+
+            font-family:
+                Inter,
+                Arial,
+                Helvetica,
+                sans-serif;
+
             line-height: 1.7;
         }
 
@@ -54,31 +57,44 @@
         }
 
 
-        /* =========================================
+        /* ===============================
            HEADER
-           ========================================= */
+        =============================== */
 
-        .blog-header {
-            border-bottom: 1px solid var(--border);
-            background: rgba(247, 247, 243, 0.96);
+        header {
+            width: 100%;
+
+            border-bottom:
+                1px solid var(--border);
         }
 
 
         .header-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 22px 32px;
+
+            max-width: 1180px;
+
+            margin: auto;
+
+            padding:
+                22px 30px;
 
             display: flex;
+
             align-items: center;
-            justify-content: space-between;
+
+            justify-content:
+                space-between;
         }
 
 
         .logo {
-            font-size: 22px;
+
+            font-size: 23px;
+
             font-weight: 800;
-            letter-spacing: -0.04em;
+
+            letter-spacing:
+                -0.04em;
         }
 
 
@@ -87,596 +103,602 @@
         }
 
 
-        .back-link {
+        .back {
+
             font-size: 14px;
+
             font-weight: 600;
+
             color: var(--muted);
         }
 
 
-        .back-link:hover {
-            color: var(--text);
-        }
+        /* ===============================
+           HERO
+        =============================== */
 
+        .hero {
 
-        /* =========================================
-           ARTICLE HERO
-           ========================================= */
+            max-width: 850px;
 
-        .article-hero {
-            max-width: var(--article-width);
-            margin: 0 auto;
-            padding: 100px 24px 65px;
+            margin: auto;
+
+            padding:
+                100px 25px 65px;
         }
 
 
         .category {
+
             display: inline-block;
 
-            margin-bottom: 24px;
+            padding:
+                6px 12px;
 
-            padding: 6px 11px;
+            margin-bottom:
+                24px;
 
-            border: 1px solid var(--border);
+            background:
+                var(--accent);
+
             border-radius: 4px;
 
-            background: var(--accent);
-
             font-size: 11px;
+
             font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                0.08em;
         }
 
 
-        .article-title {
+        h1 {
+
             margin: 0;
 
-            font-size: clamp(42px, 6vw, 76px);
-            line-height: 0.98;
-            letter-spacing: -0.055em;
+            font-size:
+                clamp(
+                    44px,
+                    7vw,
+                    78px
+                );
+
+            line-height:
+                0.98;
+
+            letter-spacing:
+                -0.055em;
+
             font-weight: 700;
         }
 
 
-        .article-description {
-            margin: 28px 0 0;
+        .description {
 
-            max-width: 680px;
+            max-width: 700px;
+
+            margin:
+                30px 0 0;
+
+            color:
+                var(--muted);
 
             font-size: 20px;
-            line-height: 1.55;
 
-            color: var(--muted);
+            line-height: 1.55;
         }
 
 
-        .article-meta {
+        .meta {
+
             display: flex;
-            align-items: center;
+
             gap: 12px;
 
-            margin-top: 32px;
+            align-items: center;
+
+            margin-top: 30px;
+
+            color:
+                var(--muted);
 
             font-size: 13px;
-            color: var(--muted);
         }
 
 
-        .meta-dot {
+        .dot {
+
             width: 4px;
+
             height: 4px;
 
             border-radius: 50%;
 
-            background: var(--muted);
+            background:
+                var(--muted);
         }
 
 
-        /* =========================================
+        /* ===============================
            ARTICLE
-           ========================================= */
+        =============================== */
 
-        .article-layout {
-            max-width: var(--max-width);
-            margin: 0 auto;
+        .article-wrapper {
 
-            padding: 0 32px 120px;
+            max-width: 850px;
 
-            display: grid;
-            grid-template-columns: 180px minmax(0, var(--article-width));
-            gap: 70px;
-            justify-content: center;
+            margin: auto;
+
+            padding:
+                0 25px 100px;
         }
 
 
-        /* =========================================
-           ARTICLE SIDEBAR
-           ========================================= */
+        article {
 
-        .article-sidebar {
-            padding-top: 10px;
+            width: 100%;
         }
 
 
-        .sidebar-label {
-            margin-bottom: 14px;
+        article p {
 
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-
-            color: var(--muted);
-        }
-
-
-        .sidebar-line {
-            width: 40px;
-            height: 2px;
-
-            margin-bottom: 20px;
-
-            background: var(--accent-dark);
-        }
-
-
-        .sidebar-text {
-            font-size: 13px;
-            line-height: 1.6;
-            color: var(--muted);
-        }
-
-
-        /* =========================================
-           MARKDOWN CONTENT
-           ========================================= */
-
-        .article-content {
-            min-width: 0;
-        }
-
-
-        .article-content > *:first-child {
-            margin-top: 0;
-        }
-
-
-        .article-content p {
-            margin: 0 0 25px;
+            margin:
+                0 0 26px;
 
             font-size: 18px;
-            line-height: 1.8;
+
+            line-height: 1.85;
         }
 
 
-        .article-content h2 {
-            margin: 65px 0 22px;
+        article h2 {
 
-            font-size: 34px;
+            margin:
+                65px 0 22px;
+
+            font-size: 35px;
+
             line-height: 1.1;
-            letter-spacing: -0.035em;
+
+            letter-spacing:
+                -0.035em;
         }
 
 
-        .article-content h3 {
-            margin: 45px 0 16px;
+        article h3 {
 
-            font-size: 24px;
+            margin:
+                45px 0 18px;
+
+            font-size: 25px;
+
             line-height: 1.2;
-            letter-spacing: -0.025em;
         }
 
 
-        .article-content h4 {
-            margin: 35px 0 14px;
+        article ul,
+        article ol {
 
-            font-size: 19px;
+            margin:
+                0 0 30px;
+
+            padding-left: 28px;
         }
 
 
-        .article-content ul,
-        .article-content ol {
-            margin: 0 0 30px;
-            padding-left: 25px;
-        }
+        article li {
 
-
-        .article-content li {
             margin-bottom: 10px;
 
             font-size: 18px;
+
             line-height: 1.7;
         }
 
 
-        .article-content strong {
+        article strong {
             font-weight: 700;
         }
 
 
-        .article-content em {
-            color: var(--muted);
+        article a {
+
+            text-decoration:
+                underline;
+
+            text-underline-offset:
+                3px;
         }
 
 
-        .article-content a {
-            text-decoration: underline;
-            text-decoration-thickness: 1px;
-            text-underline-offset: 3px;
-        }
+        /* ===============================
+           BLOCKQUOTE
+        =============================== */
 
+        article blockquote {
 
-        .article-content blockquote {
-            margin: 40px 0;
+            margin:
+                40px 0;
 
-            padding: 10px 0 10px 25px;
+            padding:
+                10px 0 10px 25px;
 
-            border-left: 3px solid var(--accent-dark);
+            border-left:
+                3px solid
+                var(--accent);
 
             font-size: 21px;
+
             line-height: 1.6;
         }
 
 
-        .article-content code {
-            padding: 3px 6px;
+        /* ===============================
+           IMAGE
+        =============================== */
 
-            border: 1px solid var(--border);
-            border-radius: 4px;
+        article img {
 
-            background: #eeeeea;
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+
+            margin:
+                40px 0;
+
+            border-radius: 6px;
+        }
+
+
+        /* ===============================
+           CODE
+        =============================== */
+
+        article pre {
+
+            overflow-x: auto;
+
+            padding: 25px;
+
+            margin:
+                35px 0;
+
+            background:
+                #111;
+
+            color:
+                #fff;
+
+            border-radius: 6px;
+        }
+
+
+        article code {
 
             font-size: 14px;
         }
 
 
-        .article-content pre {
-            overflow-x: auto;
+        /* ===============================
+           TABLE
+        =============================== */
 
-            margin: 35px 0;
-            padding: 25px;
+        article table {
 
-            border: 1px solid var(--border);
-            border-radius: 6px;
-
-            background: #111111;
-            color: #ffffff;
-        }
-
-
-        .article-content pre code {
-            padding: 0;
-            border: 0;
-            background: transparent;
-            color: inherit;
-        }
-
-
-        .article-content img {
-            display: block;
-
-            max-width: 100%;
-            height: auto;
-
-            margin: 40px 0;
-
-            border-radius: 6px;
-        }
-
-
-        .article-content hr {
-            margin: 55px 0;
-
-            border: 0;
-            border-top: 1px solid var(--border);
-        }
-
-
-        /* =========================================
-           TABLES
-           ========================================= */
-
-        .article-content table {
             width: 100%;
-            margin: 40px 0;
 
-            border-collapse: collapse;
+            border-collapse:
+                collapse;
+
+            margin:
+                40px 0;
 
             font-size: 15px;
         }
 
 
-        .article-content th,
-        .article-content td {
-            padding: 13px 15px;
+        article th,
+        article td {
 
-            border: 1px solid var(--border);
+            padding:
+                13px 15px;
 
-            text-align: left;
+            border:
+                1px solid
+                var(--border);
+
+            text-align:
+                left;
         }
 
 
-        .article-content th {
-            background: #eeeeea;
-            font-weight: 700;
+        article th {
+
+            background:
+                #eeeeea;
+
+            font-weight:
+                700;
         }
 
 
-        /* =========================================
+        /* ===============================
+           HR
+        =============================== */
+
+        article hr {
+
+            margin:
+                55px 0;
+
+            border: 0;
+
+            border-top:
+                1px solid
+                var(--border);
+        }
+
+
+        /* ===============================
            FOOTER
-           ========================================= */
+        =============================== */
 
-        .article-footer {
-            max-width: var(--article-width);
-            margin: 0 auto;
+        footer {
 
-            padding: 35px 24px 70px;
+            max-width:
+                850px;
 
-            border-top: 1px solid var(--border);
+            margin:
+                auto;
+
+            padding:
+                35px 25px 70px;
+
+            border-top:
+                1px solid
+                var(--border);
         }
 
 
-        .footer-category {
-            display: inline-block;
+        footer p {
 
-            margin-bottom: 15px;
-
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-
-        .footer-title {
             margin: 0;
 
-            font-size: 24px;
-            letter-spacing: -0.03em;
+            font-size:
+                13px;
+
+            color:
+                var(--muted);
         }
 
 
-        /* =========================================
-           ERROR
-           ========================================= */
-
-        .error {
-            max-width: var(--article-width);
-            margin: 100px auto;
-            padding: 24px;
-        }
-
-
-        /* =========================================
+        /* ===============================
            MOBILE
-           ========================================= */
+        =============================== */
 
-        @media (max-width: 800px) {
+        @media (max-width: 700px) {
 
             .header-inner {
-                padding: 18px 20px;
+
+                padding:
+                    18px 20px;
             }
 
 
-            .article-hero {
-                padding: 65px 20px 45px;
+            .hero {
+
+                padding:
+                    65px 20px 45px;
             }
 
 
-            .article-title {
-                font-size: 46px;
+            h1 {
+
+                font-size:
+                    46px;
             }
 
 
-            .article-description {
-                font-size: 18px;
+            .description {
+
+                font-size:
+                    18px;
             }
 
 
-            .article-layout {
-                display: block;
+            .article-wrapper {
 
-                padding: 0 20px 80px;
+                padding:
+                    0 20px 70px;
             }
 
 
-            .article-sidebar {
-                display: none;
+            article p,
+            article li {
+
+                font-size:
+                    17px;
             }
 
 
-            .article-content p,
-            .article-content li {
-                font-size: 17px;
+            article h2 {
+
+                font-size:
+                    30px;
             }
 
 
-            .article-content h2 {
-                font-size: 30px;
+            article h3 {
+
+                font-size:
+                    23px;
             }
 
 
-            .article-content h3 {
-                font-size: 23px;
-            }
+            footer {
 
+                padding-left:
+                    20px;
 
-            .article-footer {
-                padding-left: 20px;
-                padding-right: 20px;
+                padding-right:
+                    20px;
             }
 
         }
 
     </style>
+
 </head>
 
 
 <body>
 
 
-    <!-- =========================================
-         HEADER
-         ========================================= -->
+<header>
 
-    <header class="blog-header">
+    <div class="header-inner">
 
-        <div class="header-inner">
+        <a href="/" class="logo">
+            Cite<span>Tail</span>
+        </a>
 
-            <a href="/" class="logo">
-                Cite<span>Tail</span>
-            </a>
+        <a href="/blog" class="back">
+            ← All posts
+        </a>
 
-            <a href="/blog" class="back-link">
-                ← All posts
-            </a>
+    </div>
 
-        </div>
-
-    </header>
+</header>
 
 
-    <!-- =========================================
-         ARTICLE HERO
-         ========================================= -->
+<section class="hero">
 
-    <section class="article-hero">
-
-        <div id="category" class="category">
-            Blog
-        </div>
+    <div
+        id="category"
+        class="category">
+        Blog
+    </div>
 
 
-        <h1 id="title" class="article-title">
-            Loading...
-        </h1>
+    <h1 id="title">
+        Loading...
+    </h1>
 
 
-        <p id="metaDescription" class="article-description">
-        </p>
+    <p
+        id="description"
+        class="description">
+    </p>
 
 
-        <div class="article-meta">
+    <div class="meta">
 
-            <span id="date">
-                —
-            </span>
+        <span id="date">
+            —
+        </span>
 
-            <span class="meta-dot"></span>
+        <span class="dot"></span>
 
-            <span>
-                CiteTail
-            </span>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================================
-         ARTICLE BODY
-         ========================================= -->
-
-    <main class="article-layout">
-
-
-        <aside class="article-sidebar">
-
-            <div class="sidebar-label">
-                Article
-            </div>
-
-            <div class="sidebar-line"></div>
-
-            <div class="sidebar-text">
-
-                Insights on SEO, GEO,
-                AEO and AI visibility.
-
-            </div>
-
-        </aside>
-
-
-        <article
-            id="content"
-            class="article-content"
-        >
-
-            Loading content...
-
-        </article>
-
-
-    </main>
-
-
-    <!-- =========================================
-         FOOTER
-         ========================================= -->
-
-    <footer class="article-footer">
-
-        <div class="footer-category">
+        <span>
             CiteTail
-        </div>
+        </span>
 
-        <h3 class="footer-title">
-            Be the answer AI gives first.
-        </h3>
+    </div>
 
-    </footer>
+</section>
 
 
-    <script>
+<div class="article-wrapper">
 
-        /* =========================================
-           GET SLUG
-           ========================================= */
+    <article id="content">
 
-        function getSlugFromUrl() {
+        Loading article...
 
-            const parts =
-                window.location.pathname
-                    .split("/")
-                    .filter(Boolean);
+    </article>
 
-            if (!parts.length) {
-                return "";
-            }
+</div>
 
-            return parts[parts.length - 1];
+
+<footer>
+
+    <p>
+        © CiteTail — Be the answer AI gives first.
+    </p>
+
+</footer>
+
+
+<script>
+
+
+    /* =========================================
+       GET SLUG
+    ========================================= */
+
+    function getSlug() {
+
+        const parts =
+            window.location.pathname
+                .split("/")
+                .filter(Boolean);
+
+
+        if (!parts.length) {
+
+            return "";
 
         }
 
 
-        /* =========================================
-           FRONTMATTER PARSER
-           ========================================= */
+        return parts[parts.length - 1];
 
-        function parseFrontmatter(text) {
+    }
 
-            const data = {};
 
-            text.split("\n").forEach(line => {
+    /* =========================================
+       FRONTMATTER
+    ========================================= */
+
+    function parseFrontmatter(text) {
+
+        const data = {};
+
+
+        text.split("\n")
+            .forEach(line => {
 
                 const separator =
                     line.indexOf(":");
 
+
                 if (separator === -1) {
+
                     return;
+
                 }
+
 
                 const key =
                     line
-                        .substring(0, separator)
+                        .substring(
+                            0,
+                            separator
+                        )
                         .trim();
+
 
                 let value =
                     line
-                        .substring(separator + 1)
+                        .substring(
+                            separator + 1
+                        )
                         .trim();
+
 
                 value =
                     value.replace(
@@ -684,213 +706,232 @@
                         ""
                     );
 
-                data[key] = value;
+
+                data[key] =
+                    value;
 
             });
 
-            return data;
+
+        return data;
+
+    }
+
+
+    /* =========================================
+       LOAD POST
+    ========================================= */
+
+    async function loadPost() {
+
+        const slug =
+            getSlug();
+
+
+        if (!slug) {
+
+            return;
 
         }
 
 
-        /* =========================================
-           LOAD BLOG
-           ========================================= */
-
-        async function loadBlogPost() {
-
-            const slug =
-                getSlugFromUrl();
+        const file =
+            `/content/posts/${slug}.md`;
 
 
-            if (!slug) {
+        try {
 
-                document.getElementById("title")
-                    .textContent =
-                    "Blog post not found";
+            const response =
+                await fetch(file);
 
-                return;
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Post not found"
+                );
 
             }
 
 
-            const postUrl =
-                `/content/posts/${slug}.md`;
+            const markdown =
+                await response.text();
 
 
-            try {
-
-                const response =
-                    await fetch(postUrl);
-
-
-                if (!response.ok) {
-
-                    throw new Error(
-                        "Blog post not found"
-                    );
-
-                }
+            const match =
+                markdown.match(
+                    /^---\s*([\s\S]*?)\s*---/
+                );
 
 
-                const markdown =
-                    await response.text();
+            let frontmatter = {};
+
+            let content =
+                markdown;
 
 
-                const frontmatterMatch =
-                    markdown.match(
-                        /^---\s*([\s\S]*?)\s*---/
+            if (match) {
+
+                frontmatter =
+                    parseFrontmatter(
+                        match[1]
                     );
 
 
-                let frontmatter = {};
-                let content = markdown;
+                content =
+                    markdown
+                        .replace(
+                            match[0],
+                            ""
+                        )
+                        .trim();
+
+            }
 
 
-                if (frontmatterMatch) {
+            /* =============================
+               DATA
+            ============================= */
 
-                    frontmatter =
-                        parseFrontmatter(
-                            frontmatterMatch[1]
-                        );
-
-
-                    content =
-                        markdown
-                            .replace(
-                                frontmatterMatch[0],
-                                ""
-                            )
-                            .trim();
-
-                }
+            const title =
+                frontmatter.title ||
+                "CiteTail Blog";
 
 
-                /* =================================
-                   PAGE DATA
-                   ================================= */
-
-                const title =
-                    frontmatter.title ||
-                    "CiteTail Blog";
+            const category =
+                frontmatter.category ||
+                "Blog";
 
 
-                const category =
-                    frontmatter.category ||
-                    "Blog";
+            const date =
+                frontmatter.date ||
+                "";
 
 
-                const date =
-                    frontmatter.date ||
-                    "";
+            const description =
+                frontmatter.metaDescription ||
+                "";
 
 
-                const description =
-                    frontmatter.metaDescription ||
-                    "";
+            /* =============================
+               INSERT
+            ============================= */
+
+            document.getElementById(
+                "title"
+            ).textContent =
+                title;
 
 
-                /* =================================
-                   INSERT DATA
-                   ================================= */
-
-                document.getElementById("title")
-                    .textContent =
-                    title;
+            document.getElementById(
+                "category"
+            ).textContent =
+                category;
 
 
-                document.getElementById("category")
-                    .textContent =
-                    category;
+            document.getElementById(
+                "description"
+            ).textContent =
+                description;
 
 
-                document.getElementById("date")
-                    .textContent =
-                    formatDate(date);
+            document.getElementById(
+                "date"
+            ).textContent =
+                formatDate(date);
 
 
-                document.getElementById(
-                    "metaDescription"
-                ).textContent =
-                    description;
+            /* =============================
+               SEO
+            ============================= */
+
+            document.title =
+                frontmatter.metaTitle ||
+                title;
 
 
-                /* =================================
-                   SEO
-                   ================================= */
-
-                document.title =
-                    frontmatter.metaTitle ||
-                    title;
-
-
-                document.getElementById(
+            document
+                .getElementById(
                     "meta-description"
-                ).setAttribute(
+                )
+                .setAttribute(
                     "content",
                     description
                 );
 
 
-                /* =================================
-                   MARKDOWN
-                   ================================= */
+            /* =============================
+               MARKDOWN
+            ============================= */
 
-                document.getElementById("content")
-                    .innerHTML =
-                    marked.parse(content);
+            document.getElementById(
+                "content"
+            ).innerHTML =
+                marked.parse(content);
 
 
-            } catch (error) {
+        } catch (error) {
 
-                console.error(error);
+            console.error(error);
 
-                document.getElementById("title")
-                    .textContent =
-                    "Blog post not found";
 
-                document.getElementById("content")
-                    .textContent =
-                    "We couldn't find this article.";
+            document.getElementById(
+                "title"
+            ).textContent =
+                "Blog post not found";
 
-            }
+
+            document.getElementById(
+                "content"
+            ).textContent =
+                "Unable to load this article.";
+
+        }
+
+    }
+
+
+    /* =========================================
+       DATE
+    ========================================= */
+
+    function formatDate(value) {
+
+        if (!value) {
+
+            return "";
 
         }
 
 
-        /* =========================================
-           DATE
-           ========================================= */
+        const date =
+            new Date(value);
 
-        function formatDate(date) {
 
-            if (!date) {
-                return "";
-            }
+        if (isNaN(date)) {
 
-            const parsed =
-                new Date(date);
-
-            if (isNaN(parsed)) {
-                return date;
-            }
-
-            return parsed.toLocaleDateString(
-                "en-US",
-                {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric"
-                }
-            );
+            return value;
 
         }
 
 
-        loadBlogPost();
+        return date.toLocaleDateString(
+            "en-US",
+            {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            }
+        );
 
-    </script>
+    }
+
+
+    loadPost();
+
+</script>
 
 
 </body>
+
 </html>
