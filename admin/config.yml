@@ -1,3 +1,12 @@
+backend:
+  name: github
+  repo: sayingbox/Citetail
+  branch: main
+  auth_methods: [token]
+
+media_folder: "images/blog"
+public_folder: "/images/blog"
+
 collections:
   - name: "post"
     label: "Blog Posts"
@@ -15,6 +24,7 @@ collections:
       - label: "URL Slug"
         name: "slug"
         widget: "string"
+        hint: "Example: state-of-ai-citations-2026"
 
       - label: "Publish Date"
         name: "date"
