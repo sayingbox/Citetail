@@ -1,42 +1,249 @@
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script>
-async function loadBlogPost() {
-    const path = window.location.pathname;
-    const parts = path.split("/").filter(Boolean);
-    const slug = parts[parts.length - 1];
+    <title>CiteTail Blog</title>
 
-    if (!slug || slug === "blog") {
-        return;
-    }
+    <!-- Markdown parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
 
-    const postUrl = `/content/posts/${slug}.md`;
+<body>
 
-    try {
-        const response = await fetch(postUrl);
+    <h1 id="title">Loading...</h1>
 
-        if (!response.ok) {
-            throw new Error(`Markdown file not found: ${postUrl}`);
+    <p>
+        <strong>Slug:</strong>
+        <span id="slug"></span>
+    </p>
+
+    <p>
+        <strong>Category:</strong>
+        <span id="category"></span>
+    </p>
+
+    <p>
+        <strong>Date:</strong>
+        <span id="date"></span>
+    </p>
+
+    <p>
+        <strong>Meta Title:</strong>
+        <span id="metaTitle"></span>
+    </p>
+
+    <p>
+        <strong>Meta Description:</strong>
+        <span id="metaDescription"></span>
+    </p>
+
+    <hr>
+
+    <h2>Blog Content</h2>
+
+    <div id="content">
+        Loading content...
+    </div>
+
+
+    <script>
+
+        async function loadBlogPost() {
+
+            // Example:
+            // https://citetail.com/blog/seo-vs-geo
+
+            const path = window.location.pathname;
+
+            const parts = path
+                .split("/")
+                .filter(Boolean);
+
+            const slug = parts[parts.length - 1];
+
+
+            if (!slug || slug === "blog") {
+
+                document.getElementById("title").textContent =
+                    "No blog slug found";
+
+                return;
+
+            }
+
+
+            // Your actual Markdown location
+            const postUrl =
+                `/content/posts/${slug}.md`;
+
+
+            console.log("Loading:", postUrl);
+
+
+            try {
+
+                const response =
+                    await fetch(postUrl);
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Could not find " + postUrl
+                    );
+
+                }
+
+
+                const markdown =
+                    await response.text();
+
+
+                console.log(
+                    "Markdown:",
+                    markdown
+                );
+
+
+                // Separate frontmatter from content
+
+                const frontmatterMatch =
+                    markdown.match(
+                        /^---\s*([\s\S]*?)\s*---/
+                    );
+
+
+                let frontmatter = {};
+
+                let content = markdown;
+
+
+                if (frontmatterMatch) {
+
+                    frontmatter =
+                        parseFrontmatter(
+                            frontmatterMatch[1]
+                        );
+
+                    content =
+                        markdown
+                            .replace(
+                                frontmatterMatch[0],
+                                ""
+                            )
+                            .trim();
+
+                }
+
+
+                // Show raw frontmatter data
+
+                document.getElementById("title")
+                    .textContent =
+                    frontmatter.title || "No title";
+
+
+                document.getElementById("slug")
+                    .textContent =
+                    frontmatter.slug || slug;
+
+
+                document.getElementById("category")
+                    .textContent =
+                    frontmatter.category || "";
+
+
+                document.getElementById("date")
+                    .textContent =
+                    frontmatter.date || "";
+
+
+                document.getElementById("metaTitle")
+                    .textContent =
+                    frontmatter.metaTitle || "";
+
+
+                document.getElementById("metaDescription")
+                    .textContent =
+                    frontmatter.metaDescription || "";
+
+
+                // Convert Markdown to HTML
+
+                document.getElementById("content")
+                    .innerHTML =
+                    marked.parse(content);
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                document.getElementById("title")
+                    .textContent =
+                    "Blog post not found";
+
+                document.getElementById("content")
+                    .textContent =
+                    error.message;
+
+            }
+
         }
 
-        const markdown = await response.text();
 
-        const content = markdown
-            .replace(/^---[\s\S]*?---/, "")
-            .trim();
+        function parseFrontmatter(text) {
 
-        document.getElementById("blog-content").innerHTML =
-            marked.parse(content);
+            const data = {};
 
-    } catch (error) {
-        console.error(error);
 
-        document.getElementById("blog-content").innerHTML = `
-            <h1>Blog post not found</h1>
-            <p>Could not load: ${postUrl}</p>
-        `;
-    }
-}
+            text.split("\n").forEach(line => {
 
-loadBlogPost();
-</script>
+                const separator =
+                    line.indexOf(":");
+
+
+                if (separator === -1) {
+                    return;
+                }
+
+
+                const key =
+                    line
+                        .substring(0, separator)
+                        .trim();
+
+
+                let value =
+                    line
+                        .substring(separator + 1)
+                        .trim();
+
+
+                // Remove quotes
+
+                value =
+                    value.replace(
+                        /^["']|["']$/g,
+                        ""
+                    );
+
+
+                data[key] = value;
+
+            });
+
+
+            return data;
+
+        }
+
+
+        loadBlogPost();
+
+    </script>
+
+</body>
+</html>
