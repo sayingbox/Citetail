@@ -52,8 +52,19 @@
 
         async function loadBlogPost() {
 
-            // Example:
-            // https://citetail.com/blog/seo-vs-geo
+            /*
+                Supported URLs:
+
+                /blog/seo-vs-geo
+                /case-study/seo-vs-geo
+                /report/seo-vs-geo
+                /guide/seo-vs-geo
+
+                All of them load:
+
+                /content/posts/seo-vs-geo.md
+            */
+
 
             const path = window.location.pathname;
 
@@ -61,25 +72,42 @@
                 .split("/")
                 .filter(Boolean);
 
+
+            // Get the last part of the URL
             const slug = parts[parts.length - 1];
 
 
-            if (!slug || slug === "blog") {
+            // Get category/path type
+            const urlCategory =
+                parts.length > 1
+                    ? parts[parts.length - 2]
+                    : "";
 
-                document.getElementById("title").textContent =
+
+            if (!slug) {
+
+                document.getElementById("title")
+                    .textContent =
                     "No blog slug found";
 
                 return;
-
             }
 
 
-            // Your actual Markdown location
+            /*
+                Markdown files are always stored here:
+
+                /content/posts/{slug}.md
+            */
+
             const postUrl =
                 `/content/posts/${slug}.md`;
 
 
-            console.log("Loading:", postUrl);
+            console.log("Current URL:", path);
+            console.log("URL Category:", urlCategory);
+            console.log("Slug:", slug);
+            console.log("Markdown:", postUrl);
 
 
             try {
@@ -107,7 +135,10 @@
                 );
 
 
-                // Separate frontmatter from content
+                /*
+                    Separate frontmatter
+                    from Markdown content
+                */
 
                 const frontmatterMatch =
                     markdown.match(
@@ -127,6 +158,7 @@
                             frontmatterMatch[1]
                         );
 
+
                     content =
                         markdown
                             .replace(
@@ -138,39 +170,49 @@
                 }
 
 
-                // Show raw frontmatter data
+                /*
+                    Display frontmatter
+                */
 
                 document.getElementById("title")
                     .textContent =
-                    frontmatter.title || "No title";
+                    frontmatter.title ||
+                    "No title";
 
 
                 document.getElementById("slug")
                     .textContent =
-                    frontmatter.slug || slug;
+                    frontmatter.slug ||
+                    slug;
 
 
                 document.getElementById("category")
                     .textContent =
-                    frontmatter.category || "";
+                    frontmatter.category ||
+                    "";
 
 
                 document.getElementById("date")
                     .textContent =
-                    frontmatter.date || "";
+                    frontmatter.date ||
+                    "";
 
 
                 document.getElementById("metaTitle")
                     .textContent =
-                    frontmatter.metaTitle || "";
+                    frontmatter.metaTitle ||
+                    "";
 
 
                 document.getElementById("metaDescription")
                     .textContent =
-                    frontmatter.metaDescription || "";
+                    frontmatter.metaDescription ||
+                    "";
 
 
-                // Convert Markdown to HTML
+                /*
+                    Convert Markdown into HTML
+                */
 
                 document.getElementById("content")
                     .innerHTML =
@@ -181,9 +223,11 @@
 
                 console.error(error);
 
+
                 document.getElementById("title")
                     .textContent =
                     "Blog post not found";
+
 
                 document.getElementById("content")
                     .textContent =
@@ -195,26 +239,64 @@
 
 
 
+        /*
+            URL logic
+
+            ONLY these categories get
+            their own URL:
+
+            case study → /case-study/post
+            report     → /report/post
+            guide      → /guide/post
+
+            Everything else:
+
+            → /blog/post
+        */
 
         function getPostUrl(post) {
-    const category = (post.category || "").toLowerCase().trim();
-    const slug = post.slug;
 
-    if (category === "case study") {
-        return `/case-study/${slug}`;
-    }
+            const category =
+                (post.category || "")
+                    .toLowerCase()
+                    .trim();
 
-    if (category === "report") {
-        return `/report/${slug}`;
-    }
 
-    if (category === "guide") {
-        return `/guide/${slug}`;
-    }
+            const slug =
+                post.slug;
 
-    return `/blog/${slug}`;
-}
 
+            if (category === "case study") {
+
+                return `/case-study/${slug}`;
+
+            }
+
+
+            if (category === "report") {
+
+                return `/report/${slug}`;
+
+            }
+
+
+            if (category === "guide") {
+
+                return `/guide/${slug}`;
+
+            }
+
+
+            // Default URL
+            return `/blog/${slug}`;
+
+        }
+
+
+
+        /*
+            Parse Markdown frontmatter
+        */
 
         function parseFrontmatter(text) {
 
@@ -228,19 +310,26 @@
 
 
                 if (separator === -1) {
+
                     return;
+
                 }
 
 
                 const key =
                     line
-                        .substring(0, separator)
+                        .substring(
+                            0,
+                            separator
+                        )
                         .trim();
 
 
                 let value =
                     line
-                        .substring(separator + 1)
+                        .substring(
+                            separator + 1
+                        )
                         .trim();
 
 
@@ -264,26 +353,7 @@
 
 
 
-
-        function getPostUrl(post) {
-    const category = (post.category || "").toLowerCase().trim();
-    const slug = post.slug;
-
-    if (category === "case study") {
-        return `/case-study/${slug}`;
-    }
-
-    if (category === "report") {
-        return `/report/${slug}`;
-    }
-
-    if (category === "guide") {
-        return `/guide/${slug}`;
-    }
-
-    return `/blog/${slug}`;
-}
-
+        // Load the post
 
         loadBlogPost();
 
