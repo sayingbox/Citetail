@@ -10,7 +10,250 @@
     <meta name="description" id="meta-description" content="">
 
     <link rel="stylesheet" href="/blog/css/style.css">
-    <link rel="stylesheet" href="/blog/css/blog.css">
+
+    <style>
+
+        :root {
+            --bg: #f7f7f3;
+            --text: #111111;
+            --muted: #6f716c;
+            --border: #dedfd9;
+            --accent: #a8ff3e;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .all-posts-bar {
+            max-width: 1100px;
+            margin: auto;
+            padding: 24px 25px 0;
+        }
+
+        .back {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+        .back:hover {
+            color: var(--text);
+        }
+
+        .hero {
+            max-width: 1100px;
+            margin: auto;
+            padding: 90px 25px 65px;
+        }
+
+        .hero--post {
+            padding-top: 40px;
+        }
+
+        .category {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 24px;
+            background: var(--accent);
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(44px, 7vw, 78px);
+            line-height: 0.98;
+            letter-spacing: -0.055em;
+            font-weight: 700;
+        }
+
+        .description {
+            max-width: 1000px;
+            margin: 30px 0 0;
+            color: var(--muted);
+            font-size: 20px;
+            line-height: 1.55;
+        }
+
+        .meta {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-top: 30px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--muted);
+        }
+
+        .article-wrapper {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 25px 100px;
+        }
+
+        article {
+            width: 100%;
+        }
+
+        article p {
+            margin: 0 0 26px;
+            font-size: 18px;
+            line-height: 1.85;
+        }
+
+        article h2 {
+            margin: 65px 0 22px;
+            font-size: 35px;
+            line-height: 1.1;
+            letter-spacing: -0.035em;
+        }
+
+        article h3 {
+            margin: 45px 0 18px;
+            font-size: 25px;
+            line-height: 1.2;
+        }
+
+        article ul,
+        article ol {
+            margin: 0 0 30px;
+            padding-left: 28px;
+        }
+
+        article li {
+            margin-bottom: 10px;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        article strong {
+            font-weight: 700;
+        }
+
+        article a {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        article blockquote {
+            margin: 40px 0;
+            padding: 10px 0 10px 25px;
+            border-left: 3px solid var(--accent);
+            font-size: 21px;
+            line-height: 1.6;
+        }
+
+        article img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 40px 0;
+            border-radius: 6px;
+        }
+
+        article pre {
+            overflow-x: auto;
+            padding: 25px;
+            margin: 35px 0;
+            background: #111;
+            color: #fff;
+            border-radius: 6px;
+        }
+
+        article code {
+            font-size: 14px;
+        }
+
+        article table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            font-size: 15px;
+        }
+
+        article th,
+        article td {
+            padding: 13px 15px;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        article th {
+            background: #eeeeea;
+            font-weight: 700;
+        }
+
+        article hr {
+            margin: 55px 0;
+            border: 0;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 700px) {
+
+            .all-posts-bar {
+                padding: 18px 20px 0;
+            }
+
+            .hero {
+                padding: 65px 20px 45px;
+            }
+
+            .hero--post {
+                padding-top: 30px;
+            }
+
+            h1 {
+                font-size: 46px;
+            }
+
+            .description {
+                font-size: 18px;
+            }
+
+            .article-wrapper {
+                padding: 0 20px 70px;
+            }
+
+            article p,
+            article li {
+                font-size: 17px;
+            }
+
+            article h2 {
+                font-size: 30px;
+            }
+
+            article h3 {
+                font-size: 23px;
+            }
+
+        }
+
+    </style>
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
