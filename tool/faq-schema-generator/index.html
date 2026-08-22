@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free FAQ Schema Generator | Citetail</title>
+<meta name="description" content="Generate valid FAQPage JSON-LD schema markup for your website in seconds. Free, no signup required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="tool.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="/index.html" class="logo">
+      <img src="/images/logo.png" alt="Citetail logo" width="26" height="26" class="logo-icon">
+      Citetail
+    </a>
+    <div class="nav-links nav-mobile-hide">
+      <a href="/index.html#features">Product</a>
+      <a href="/geo">GEO</a>
+      <a href="/aeo">AEO</a>
+      <a href="/index.html#tools">Tools</a>
+    </div>
+    <a href="#" class="nav-cta">Get Free Report</a>
+  </div>
+</nav>
+
+<header class="subpage-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="/index.html">Home</a> / Tools / FAQ Schema Generator</div>
+    <div class="kicker">Free tool</div>
+    <h1 class="serif" style="max-width:760px;">FAQ Schema Generator</h1>
+    <p class="sub" style="max-width:640px;">Add your questions and answers, and get valid FAQPage JSON-LD schema markup ready to paste into your site — free, no signup.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap" style="max-width:900px;">
+    <div class="tool-app">
+      <div class="tool-field">
+        <label>Questions &amp; Answers</label>
+        <div class="hint" style="margin-bottom:10px;">Add each FAQ question with its answer. Answers can include plain text (HTML tags will be stripped for schema).</div>
+        <div id="faqRows"></div>
+        <button type="button" class="tool-add-btn" onclick="addFaqRow()">+ Add Question</button>
+      </div>
+
+      <div class="tool-actions">
+        <button class="tool-btn-primary" onclick="generateSchema()">Generate FAQ Schema</button>
+        <button class="tool-btn-ghost" onclick="downloadSchema()">Download file</button>
+      </div>
+
+      <div class="tool-output-wrap">
+        <button class="tool-copy-btn" onclick="copyOutput('output')">Copy</button>
+        <pre class="tool-output" id="output">Add questions above and click "Generate FAQ Schema".</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="/index.html" class="flogo">Citetail</a>
+    <div class="flinks"><a href="/index.html#features">Product</a><a href="/geo">GEO</a><a href="/aeo">AEO</a></div>
+    <div class="mono">© 2026 Citetail</div>
+  </div>
+</footer>
+
+<script>
+let faqRowCount = 0;
+
+function addFaqRow(question = '', answer = '') {
+  faqRowCount++;
+  const id = faqRowCount;
+  const row = document.createElement('div');
+  row.className = 'tool-row';
+  row.id = 'faqrow-' + id;
+
+  row.innerHTML = `
+    <div style="flex:1;">
+      <label style="font-size:11.5px;">Question</label>
+      <input type="text" class="tool-input faq-question" placeholder="What is your return policy?" value="${escapeHtmlAttr(question)}">
+      <label style="font-size:11.5px;margin-top:8px;display:block;">Answer</label>
+      <textarea class="tool-input faq-answer" placeholder="We offer a 30-day return policy on all items..." rows="2">${escapeHtmlText(answer)}</textarea>
+    </div>
+    <button type="button" class="tool-row-remove" onclick="document.getElementById('faqrow-${id}').remove()">✕</button>
+  `;
+  document.getElementById('faqRows').appendChild(row);
+}
+
+function escapeHtmlAttr(str) {
+  return str.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function escapeHtmlText(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+addFaqRow('What is Citetail?', 'Citetail is a platform that helps websites optimize for AI search engines and generative answer engines.');
+addFaqRow('Is this tool free to use?', 'Yes, this FAQ schema generator is completely free with no signup required.');
+
+function generateSchema() {
+  const questions = document.querySelectorAll('.faq-question');
+  const answers = document.querySelectorAll('.faq-answer');
+
+  let entities = [];
+  let hasRows = false;
+
+  questions.forEach((el, i) => {
+    const q = el.value.trim();
+    const a = answers[i].value.trim();
+    if (!q || !a) return;
+    hasRows = true;
+    entities.push({
+      "@type": "Question",
+      "name": q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": a
+      }
+    });
+  });
+
+  if (!hasRows) {
+    document.getElementById('output').textContent = 'Add at least one complete question and answer above.';
+    return 'Add at least one complete question and answer above.';
+  }
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": entities
+  };
+
+  const jsonString = JSON.stringify(schema, null, 2);
+  const out = `<script type="application/ld+json">\n${jsonString}\n<\/script>`;
+
+  document.getElementById('output').textContent = out;
+  return out;
+}
+
+function downloadSchema() {
+  const content = generateSchema();
+  const blob = new Blob([content], { type: 'text/html' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'faq-schema.html';
+  link.click();
+}
+
+function copyOutput(id) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text);
+  event.target.textContent = 'Copied!';
+  setTimeout(() => event.target.textContent = 'Copy', 1500);
+}
+</script>
+
+</body>
+</html>
