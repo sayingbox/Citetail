@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/blog/:slug",
-      "destination": "/blog.html"
+      "destination": "/blog/blog.html"
     },
     {
       "source": "/case-study/:slug",
