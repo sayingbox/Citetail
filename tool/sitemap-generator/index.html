@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Sitemap.xml Generator | Citetail</title>
+<meta name="description" content="Generate a valid sitemap.xml file for your website in seconds. Free, no signup required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/tool.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="/index.html" class="logo">
+      <img src="/images/logo.png" alt="Citetail logo" width="26" height="26" class="logo-icon">
+      Citetail
+    </a>
+    <div class="nav-links nav-mobile-hide">
+      <a href="/index.html#features">Product</a>
+      <a href="/geo">GEO</a>
+      <a href="/aeo">AEO</a>
+      <a href="/index.html#tools">Tools</a>
+    </div>
+    <a href="#" class="nav-cta">Get Free Report</a>
+  </div>
+</nav>
+
+<header class="subpage-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="/index.html">Home</a> / Tools / Sitemap Generator</div>
+    <div class="kicker">Free tool</div>
+    <h1 class="serif" style="max-width:760px;">Sitemap.xml Generator</h1>
+    <p class="sub" style="max-width:640px;">Add your URLs, set priority and change frequency, and download a search-engine-ready sitemap.xml — free, no signup.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap" style="max-width:900px;">
+    <div class="tool-app">
+      <div class="tool-field">
+        <label>URLs</label>
+        <div class="hint" style="margin-bottom:10px;">Full URL, change frequency, and priority (0.0–1.0).</div>
+        <div id="urlRows"></div>
+        <button type="button" class="tool-add-btn" onclick="addUrlRow()">+ Add URL</button>
+      </div>
+
+      <div class="tool-actions">
+        <button class="tool-btn-primary" onclick="generateSitemap()">Generate sitemap.xml</button>
+        <button class="tool-btn-ghost" onclick="downloadSitemap()">Download file</button>
+      </div>
+
+      <div class="tool-output-wrap">
+        <button class="tool-copy-btn" onclick="copyOutput('output')">Copy</button>
+        <pre class="tool-output" id="output">Add URLs above and click "Generate sitemap.xml".</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="/index.html" class="flogo">Citetail</a>
+    <div class="flinks"><a href="/index.html#features">Product</a><a href="/geo">GEO</a><a href="/aeo">AEO</a></div>
+    <div class="mono">© 2026 Citetail</div>
+  </div>
+</footer>
+
+<script>
+let urlRowCount = 0;
+const freqOptions = ['always','hourly','daily','weekly','monthly','yearly','never'];
+
+function addUrlRow(url = '', freq = 'weekly', priority = '0.8') {
+  urlRowCount++;
+  const id = urlRowCount;
+  const row = document.createElement('div');
+  row.className = 'tool-row';
+  row.id = 'urlrow-' + id;
+
+  const freqOpts = freqOptions.map(f => `<option value="${f}" ${f===freq?'selected':''}>${f}</option>`).join('');
+
+  row.innerHTML = `
+    <div>
+      <label style="font-size:11.5px;">URL</label>
+      <input type="text" class="tool-input sm-url" placeholder="https://example.com/page" value="${url}">
+    </div>
+    <div>
+      <label style="font-size:11.5px;">Change freq</label>
+      <select class="tool-select sm-freq">${freqOpts}</select>
+    </div>
+    <div>
+      <label style="font-size:11.5px;">Priority</label>
+      <input type="text" class="tool-input sm-priority" placeholder="0.8" value="${priority}">
+    </div>
+    <button type="button" class="tool-row-remove" onclick="document.getElementById('urlrow-${id}').remove()">✕</button>
+  `;
+  document.getElementById('urlRows').appendChild(row);
+}
+
+addUrlRow('https://example.com/', 'weekly', '1.0');
+addUrlRow('https://example.com/about', 'monthly', '0.6');
+
+function generateSitemap() {
+  const urls = document.querySelectorAll('.sm-url');
+  const freqs = document.querySelectorAll('.sm-freq');
+  const priorities = document.querySelectorAll('.sm-priority');
+  const today = new Date().toISOString().split('T')[0];
+
+  let out = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+  out += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+  let hasRows = false;
+  urls.forEach((el, i) => {
+    const url = el.value.trim();
+    if (!url) return;
+    hasRows = true;
+    const freq = freqs[i].value;
+    const priority = priorities[i].value.trim() || '0.5';
+    out += `  <url>\n`;
+    out += `    <loc>${escapeXml(url)}</loc>\n`;
+    out += `    <lastmod>${today}</lastmod>\n`;
+    out += `    <changefreq>${freq}</changefreq>\n`;
+    out += `    <priority>${priority}</priority>\n`;
+    out += `  </url>\n`;
+  });
+
+  out += `</urlset>`;
+
+  if (!hasRows) out = 'Add at least one URL above.';
+
+  document.getElementById('output').textContent = out;
+  return out;
+}
+
+function escapeXml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');
+}
+
+function downloadSitemap() {
+  const content = generateSitemap();
+  const blob = new Blob([content], { type: 'application/xml' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'sitemap.xml';
+  link.click();
+}
+
+function copyOutput(id) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text);
+  event.target.textContent = 'Copied!';
+  setTimeout(() => event.target.textContent = 'Copy', 1500);
+}
+</script>
+
+</body>
+</html>
