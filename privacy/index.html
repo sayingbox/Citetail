@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Citetail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-900:#FFFFFF;
+  --bg-800:#F5F7FA;
+  --bg-700:#E2E8F0;
+  --violet-500:#18CB96;
+  --violet-400:#12A87A;
+  --violet-300:#0B7A57;
+  --violet-900:#DFFBF1;
+  --gold-500:#F97316;
+  --gold-300:#FDE68A;
+  --red-500:#EF4444;
+  --text-1:#0F172A;
+  --text-2:#475569;
+  --text-3:#64748B;
+  --line:rgba(15,23,42,0.10);
+  --line-strong:rgba(15,23,42,0.20);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg-900);
+  color:var(--text-1);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.serif{font-family:'Sora',sans-serif;font-weight:600;letter-spacing:-0.02em;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1300px;margin:0 auto;padding:0 32px;}
+
+/* ===== NAV (matches site) ===== */
+nav{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,0.86);backdrop-filter:blur(10px);z-index:50;}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;}
+.logo{display:flex;align-items:center;gap:9px;font-weight:600;font-size:18px;font-family:'Sora',sans-serif;}
+.logo-dot{width:8px;height:8px;border-radius:50%;background:var(--gold-500);}
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links a{font-size:14.5px;font-weight:500;color:var(--text-2);transition:color .15s;}
+.nav-links a:hover{color:var(--text-1);}
+.nav-cta{background:var(--violet-500);color:#fff;padding:10px 20px;border-radius:6px;font-size:14px;font-weight:600;transition:background .15s;}
+.nav-cta:hover{background:var(--violet-400);}
+@media(max-width:820px){.nav-links{display:none;}}
+
+/* ===== breadcrumb ===== */
+.crumb{font-size:13px;color:var(--text-2);margin-bottom:18px;}
+.crumb a{color:var(--violet-500);font-weight:500;}
+.crumb a:hover{text-decoration:underline;}
+
+/* ===== subpage hero ===== */
+.subpage-hero{padding:64px 0 40px;border-bottom:1px solid var(--line);}
+.kicker{
+  font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:var(--gold-500);
+  text-transform:uppercase;letter-spacing:0.06em;margin-bottom:18px;
+  display:inline-flex;align-items:center;gap:9px;padding:6px 12px;
+  border:1px solid var(--line-strong);border-radius:20px;
+}
+.subpage-hero h1{font-size:clamp(32px,4.4vw,48px);font-weight:400;line-height:1.1;margin-bottom:18px;font-family:'Sora',sans-serif;}
+.subpage-hero p.sub{font-size:16.5px;color:var(--text-2);max-width:600px;margin-bottom:20px;}
+.effective-line{font-size:13px;color:var(--text-3);}
+.effective-line strong{color:var(--text-1);font-weight:600;}
+
+/* ===== layout ===== */
+.policy-layout{
+  display:grid;grid-template-columns:250px 1fr;gap:56px;align-items:start;
+  padding:56px 0 96px;
+}
+.toc{position:sticky;top:98px;border-left:2px solid var(--line);padding-left:18px;}
+.toc h2{
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:var(--text-2);
+  text-transform:uppercase;letter-spacing:0.05em;margin-bottom:14px;
+}
+.toc ol{list-style:none;counter-reset:toc;}
+.toc li{counter-increment:toc;margin-bottom:10px;}
+.toc a{display:flex;gap:9px;font-size:13.5px;color:var(--text-2);transition:color .15s;}
+.toc a:hover{color:var(--violet-400);}
+.toc a::before{
+  content:counter(toc,decimal-leading-zero);color:var(--violet-500);
+  font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-size:12px;flex-shrink:0;
+}
+
+main{min-width:0;}
+.section-head{margin-bottom:50px;}
+
+.p-section{padding:36px 0;border-bottom:1px solid var(--line);scroll-margin-top:96px;}
+.p-section:last-of-type{border-bottom:none;padding-bottom:0;}
+.p-section h2{
+  font-size:22px;font-weight:600;font-family:'Sora',sans-serif;
+  margin:0 0 14px;display:flex;align-items:baseline;gap:12px;
+}
+.p-section h2 .fnum{
+  font-family:'Sora',sans-serif;font-size:13px;color:var(--violet-500);font-weight:600;
+  background:var(--violet-900);padding:3px 9px;border-radius:6px;
+}
+.p-section p{margin:12px 0;font-size:15px;color:var(--text-2);max-width:68ch;}
+.p-section ul{margin:12px 0;padding-left:20px;max-width:66ch;}
+.p-section li{margin-bottom:9px;font-size:15px;color:var(--text-2);}
+.p-section li strong{color:var(--text-1);font-weight:600;}
+
+/* ===== compare/data table (reused component) ===== */
+.compare-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:18px 0;}
+.compare-table{width:100%;border-collapse:collapse;min-width:560px;background:var(--bg-900);}
+.compare-table th{
+  text-align:left;font-family:'Sora',sans-serif;font-weight:600;font-size:14px;
+  color:var(--text-1);padding:16px 20px;background:var(--bg-800);border-bottom:1px solid var(--line);
+}
+.compare-table th:first-child{color:var(--text-2);font-family:'Inter',sans-serif;font-weight:500;font-size:11.5px;text-transform:uppercase;letter-spacing:0.04em;}
+.compare-table td{padding:14px 20px;font-size:13.5px;color:var(--text-2);border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-table td:first-child{
+  font-family:'Inter',sans-serif;font-weight:600;font-size:12.5px;color:var(--text-1);
+  text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;
+}
+@media(max-width:700px){.compare-table th,.compare-table td{padding:12px 14px;font-size:12.5px;}}
+
+/* ===== def-block (reused component, used as callout) ===== */
+.def-block{background:var(--bg-800);border:1px solid var(--line);border-radius:12px;padding:26px 28px;margin:18px 0;}
+.def-block .term{font-family:'Inter',sans-serif;font-size:12px;color:var(--gold-500);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:10px;}
+.def-block p{font-size:14.5px;color:var(--text-2);max-width:720px;margin:0;}
+.def-block strong{color:var(--text-1);font-weight:600;}
+
+.contact-card{
+  background:var(--bg-900);border:1px solid var(--line);border-radius:12px;
+  padding:26px 28px;margin-top:8px;
+}
+.contact-card p{margin:5px 0;font-size:14.5px;color:var(--text-2);}
+.contact-card a{color:var(--violet-500);font-weight:600;}
+.contact-card a:hover{text-decoration:underline;}
+
+@media(max-width:900px){
+  .policy-layout{grid-template-columns:1fr;padding:40px 0 64px;}
+  .toc{position:static;border-left:none;border-top:1px solid var(--line);padding-left:0;padding-top:20px;order:2;}
+  main{order:1;}
+  .wrap{padding:0 20px;}
+}
+
+/* ===== FOOTER (matches site) ===== */
+footer{background:var(--bg-800);color:var(--text-2);padding-top:64px;border-top:1px solid var(--line);}
+footer .wrap{max-width:1300px;}
+.footer-top{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:40px;padding-bottom:48px;border-bottom:1px solid var(--line);}
+.footer-brand .flogo{color:var(--text-1);font-weight:600;font-family:'Sora',sans-serif;font-size:18px;display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.footer-brand p{font-size:13.5px;color:var(--text-2);max-width:260px;margin-bottom:22px;line-height:1.6;}
+.footer-social{display:flex;flex-wrap:wrap;gap:10px;}
+.footer-social a{width:34px;height:34px;border-radius:8px;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;color:var(--text-2);transition:border-color .15s,color .15s,background .15s;font-size:12px;font-weight:600;}
+.footer-social a:hover{border-color:var(--violet-400);color:var(--violet-400);background:var(--violet-900);}
+.footer-col-head{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;color:var(--text-1);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:18px;}
+.footer-col a{display:block;font-size:13.5px;color:var(--text-2);padding:7px 0;transition:color .15s;}
+.footer-col a:hover{color:var(--violet-400);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding:24px 0 28px;}
+.footer-legal{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.footer-legal a{font-size:12.5px;color:var(--text-2);transition:color .15s;}
+.footer-legal a:hover{color:var(--text-1);}
+.footer-bottom .mono{font-size:12.5px;color:var(--text-3);}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:36px 28px;}.footer-brand{grid-column:1 / -1;}}
+@media(max-width:600px){.footer-top{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="/index.html" class="logo">
+      <img src="/images/logo.png" alt="Citetail logo" width="26" height="26" class="logo-icon">
+      Citetail
+    </a>
+
+    <div class="nav-links nav-mobile-hide" id="desktopNav">
+
+      <!-- PRODUCT mega menu -->
+      <div class="nav-item">
+        <button class="nav-trigger">Product <span class="nav-caret"></span></button>
+        <div class="mega-panel">
+          <div class="mega-grid">
+            <div>
+              <div class="mega-col-head">Core features</div>
+              <a href="/#features" class="mega-link">
+                <div class="mega-link-icon">◆</div>
+                <div class="mega-link-text"><h4>GEO Scoring</h4><p>Every page scored against the six GEO factors.</p></div>
+              </a>
+              <a href="/#features" class="mega-link">
+                <div class="mega-link-icon">◆</div>
+                <div class="mega-link-text"><h4>Citation Tracking</h4><p>See which pages get pulled into an AI answer.</p></div>
+              </a>
+              
+                <a href="/#features" class="mega-link">
+                <div class="mega-link-icon">◆</div>
+                <div class="mega-link-text"><h4>AI Visibility </h4><p>Know whose content is winning the citation.</p></div>
+              </a>
+                <a href="/#features" class="mega-link">
+                <div class="mega-link-icon">◆</div>
+                <div class="mega-link-text"><h4>Content Optimization</h4><p>Know whose content is winning the citation.</p></div>
+              </a>
+                <a href="/#features" class="mega-link">
+                <div class="mega-link-icon">◆</div>
+                <div class="mega-link-text"><h4>AI Agent</h4><p>Know whose content is winning the citation.</p></div>
+              </a>
+            </div>
+            <div>
+              <div class="mega-col-head">How it works</div>
+              <a href="/#how" class="mega-link">
+                <div class="mega-link-icon">◈</div>
+                <div class="mega-link-text"><h4>Audit your content</h4><p>Score existing pages against the GEO factors.</p></div>
+              </a>
+              <a href="/#how" class="mega-link">
+                <div class="mega-link-icon">◈</div>
+                <div class="mega-link-text"><h4>Fix what's holding you back</h4><p>Specific, page-level recommendations.</p></div>
+              </a>
+              <a href="/#how" class="mega-link">
+                <div class="mega-link-icon">◈</div>
+                <div class="mega-link-text"><h4>Track the citation</h4><p>Watch your GEO score and citations move together.</p></div>
+              </a>
+            </div>
+            <div>
+              <div class="mega-col-head">Free tools</div>
+              <a href="/tool/llms" class="mega-link">
+                <div class="mega-link-icon">✦</div>
+                <div class="mega-link-text"><h4>llms.txt Generator</h4><p>Tell AI models how to read your site.</p></div>
+              </a>
+              <a href="/tool/sitemap-generator" class="mega-link">
+                <div class="mega-link-icon">✦</div>
+                <div class="mega-link-text"><h4>Sitemap.xml Generator</h4><p>Downloadable sitemap in seconds.</p></div>
+              </a>
+              <a href="/tool/prompt-generator" class="mega-link">
+                <div class="mega-link-icon">✦</div>
+                <div class="mega-link-text"><h4>AI Prompt Generator <span class="mega-badge-new">New</span></h4><p>Structured prompts for any model.</p></div>
+              </a>
+                <a href="/tool/robots-txt-generator" class="mega-link">
+                <div class="mega-link-icon">✦</div>
+                <div class="mega-link-text"><h4>Robots txt Generator <span class="mega-badge-new">New</span></h4><p>Structured prompts for any model.</p></div>
+              </a>
+            </div>
+          </div>
+          <div class="mega-footer">
+            <p>See the full product in action.</p>
+            <a href="https://tally.so/r/1A0oMg" class="btn-primary">Get Free Report</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOLUTIONS mega menu -->
+      <div class="nav-item">
+        <button class="nav-trigger">Solutions <span class="nav-caret"></span></button>
+        <div class="mega-panel">
+          <div class="mega-grid">
+            <div>
+              <div class="mega-col-head">By platform</div>
+              <a href="/solutions/chatgpt" class="mega-link">
+                <div class="mega-link-icon">◆</div>
+                <div class="mega-link-text"><h4>ChatGPT Visibility</h4><p>Track and improve citations inside ChatGPT.</p></div>
+              </a>
+              <a href="/solutions/perplexity" class="mega-link">
+                <div class="mega-link-icon">◆</div>
+                <div class="mega-link-text"><h4>Perplexity Visibility</h4><p>Monitor your share of Perplexity answers.</p></div>
+              </a>
+              <a href="/solutions/gemini" class="mega-link">
+                <div class="mega-link-icon">◆</div>
+                <div class="mega-link-text"><h4>Gemini & AI Overviews</h4><p>Win placement inside Google's AI Overviews.</p></div>
+              </a>
+                <a href="/solutions/claude" class="mega-link">
+                <div class="mega-link-icon">◆</div>
+                <div class="mega-link-text"><h4>Claude</h4><p>Win placement inside Claude.</p></div>
+              </a>
+                <a href="/solutions/copilot" class="mega-link">
+                <div class="mega-link-icon">◆</div>
+                <div class="mega-link-text"><h4>Copilot</h4><p>Win placement inside Copilot.</p></div>
+              </a>
+            </div>
+            <div>
+              <div class="mega-col-head">By team</div>
+              <a href="/solutions/marketing" class="mega-link">
+                <div class="mega-link-icon">◈</div>
+                <div class="mega-link-text"><h4>Marketing teams</h4><p>Prove content ROI beyond click-through rate.</p></div>
+              </a>
+              <a href="/solutions/content" class="mega-link">
+                <div class="mega-link-icon">◈</div>
+                <div class="mega-link-text"><h4>Content teams</h4><p>Know which pages to fix first.</p></div>
+              </a>
+              <a href="/solutions/agencies" class="mega-link">
+                <div class="mega-link-icon">◈</div>
+                <div class="mega-link-text"><h4>Agencies</h4><p>Report GEO/AEO wins across every client.</p></div>
+              </a>
+                 <a href="/solutions/agencies" class="mega-link">
+                <div class="mega-link-icon">◈</div>
+                <div class="mega-link-text"><h4>Solo Professionals</h4><p>Report GEO/AEO wins across every client.</p></div>
+              </a>
+            </div>
+            <div>
+              <div class="mega-col-head">By industry</div>
+              <a href="/solutions/saas" class="mega-link">
+                <div class="mega-link-icon">✦</div>
+                <div class="mega-link-text"><h4>B2B SaaS</h4><p>Win comparison and "best tool for X" queries.</p></div>
+              </a>
+              <a href="/solutions/ecommerce" class="mega-link">
+                <div class="mega-link-icon">✦</div>
+                <div class="mega-link-text"><h4>Ecommerce</h4><p>Get cited in AI product recommendations.</p></div>
+              </a>
+              <a href="/solutions/healthcare" class="mega-link">
+                <div class="mega-link-icon">✦</div>
+                <div class="mega-link-text"><h4>Healthcare</h4><p>Be the answer AI gives first, safely.</p></div>
+              </a>
+                 <a href="/solutions/healthcare" class="mega-link">
+                <div class="mega-link-icon">✦</div>
+                <div class="mega-link-text"><h4>Real Estate</h4><p>Be the answer AI gives first, safely.</p></div>
+              </a>
+                 <a href="/solutions/healthcare" class="mega-link">
+                <div class="mega-link-icon">✦</div>
+                <div class="mega-link-text"><h4>Professional Services</h4><p>Be the answer AI gives first, safely.</p></div>
+              </a>
+            </div>
+          </div>
+          <div class="mega-footer">
+            <p>Not sure where to start? See how Citetail fits your team.</p>
+            <a href="https://tally.so/r/1A0oMg" class="btn-primary">Get Free Report</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="/geo" class="nav-plain">GEO</a>
+      <a href="/aeo" class="nav-plain">AEO</a>
+      <a href="/#pricing" class="nav-plain">Pricing</a>
+
+      <!-- RESEARCH mega menu -->
+      <div class="nav-item">
+        <button class="nav-trigger">Research <span class="nav-caret"></span></button>
+        <div class="mega-panel">
+          <div class="mega-grid">
+            <div>
+              <div class="mega-col-head">Reports</div>
+              <a href="/blog/state-of-ai-citations-2026" class="mega-link">
+                <div class="mega-link-icon">◆</div>
+                <div class="mega-link-text"><h4>State of AI Citations 2026</h4><p>Annual benchmark across ChatGPT, Perplexity & Gemini.</p></div>
+              </a>
+              <a href="/blog" class="mega-link">
+                <div class="mega-link-icon">◆</div>
+                <div class="mega-link-text"><h4>Industry Benchmarks</h4><p>Average citation share by vertical.</p></div>
+              </a>
+            </div>
+            <div>
+              <div class="mega-col-head">Guides</div>
+              <a href="/blog" class="mega-link">
+                <div class="mega-link-icon">◈</div>
+                <div class="mega-link-text"><h4>The GEO Playbook</h4><p>A practical guide to getting cited by AI.</p></div>
+              </a>
+              <a href="/blog" class="mega-link">
+                <div class="mega-link-icon">◈</div>
+                <div class="mega-link-text"><h4>Complete Schema Markup Guide</h4><p>Every schema type that matters for AI search.</p></div>
+              </a>
+            </div>
+            <div>
+              <div class="mega-col-head">Blog</div>
+              <a href="/blog" class="mega-link">
+                <div class="mega-link-icon">✦</div>
+                <div class="mega-link-text"><h4>Latest articles</h4><p>News and analysis on AI search trends.</p></div>
+              </a>
+              <a href="/blog" class="mega-link">
+                <div class="mega-link-icon">✦</div>
+                <div class="mega-link-text"><h4>Case studies</h4><p>How real brands improved their AI visibility.</p></div>
+              </a>
+            </div>
+          </div>
+          <div class="mega-footer">
+            <p>New research drops monthly.</p>
+            <a href="/blog" class="btn-primary">Browse all research</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <a href="https://tally.so/r/1A0oMg" class="nav-cta nav-mobile-hide">Get Free Report</a>
+
+    <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile full-screen menu -->
+  <div class="mobile-menu" id="mobileMenu">
+
+    <div class="nav-item">
+      <button class="nav-trigger">Product <span class="nav-caret"></span></button>
+      <div class="mega-panel">
+        <div class="mega-grid">
+          <a href="/#features" class="mega-link"><div class="mega-link-text"><h4>GEO Scoring</h4></div></a>
+          <a href="/#features" class="mega-link"><div class="mega-link-text"><h4>Citation Tracking</h4></div></a>
+          <a href="/#features" class="mega-link"><div class="mega-link-text"><h4>Competitor Benchmarking</h4></div></a>
+          <a href="/#how" class="mega-link"><div class="mega-link-text"><h4>How it works</h4></div></a>
+          <a href="/tool/llms" class="mega-link"><div class="mega-link-text"><h4>llms.txt Generator</h4></div></a>
+          <a href="/tool/sitemap-generator" class="mega-link"><div class="mega-link-text"><h4>Sitemap.xml Generator</h4></div></a>
+          <a href="/tool/prompt-generator" class="mega-link"><div class="mega-link-text"><h4>AI Prompt Generator</h4></div></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button class="nav-trigger">Solutions <span class="nav-caret"></span></button>
+      <div class="mega-panel">
+        <div class="mega-grid">
+          <a href="/solutions/chatgpt" class="mega-link"><div class="mega-link-text"><h4>ChatGPT Visibility</h4></div></a>
+          <a href="/solutions/perplexity" class="mega-link"><div class="mega-link-text"><h4>Perplexity Visibility</h4></div></a>
+          <a href="/solutions/gemini" class="mega-link"><div class="mega-link-text"><h4>Gemini & AI Overviews</h4></div></a>
+          <a href="/solutions/claude" class="mega-link"><div class="mega-link-text"><h4>Claude</h4></div></a>
+          <a href="/solutions/marketing" class="mega-link"><div class="mega-link-text"><h4>Marketing teams</h4></div></a>
+          <a href="/solutions/content" class="mega-link"><div class="mega-link-text"><h4>Content teams</h4></div></a>
+          <a href="/solutions/agencies" class="mega-link"><div class="mega-link-text"><h4>Agencies</h4></div></a>
+        </div>
+      </div>
+    </div>
+
+    <a href="/geo" class="mobile-plain-link">GEO</a>
+    <a href="/aeo" class="mobile-plain-link">AEO</a>
+    <a href="/#pricing" class="mobile-plain-link">Pricing</a>
+
+    <div class="nav-item">
+      <button class="nav-trigger">Research <span class="nav-caret"></span></button>
+      <div class="mega-panel">
+        <div class="mega-grid">
+          <a href="/blog/state-of-ai-citations-2026" class="mega-link"><div class="mega-link-text"><h4>State of AI Citations 2026</h4></div></a>
+          <a href="/blog" class="mega-link"><div class="mega-link-text"><h4>The GEO Playbook</h4></div></a>
+          <a href="/blog" class="mega-link"><div class="mega-link-text"><h4>Blog</h4></div></a>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;">
+      <a href="https://tally.so/r/1A0oMg" class="btn-primary" style="display:block;text-align:center;">Get Free Report</a>
+    </div>
+  </div>
+</nav>
+
+<header class="subpage-hero">
+  <div class="wrap">
+    <p class="crumb"><a href="/">Home</a> / Privacy Policy</p>
+    <span class="kicker">Legal</span>
+    <h1>How Citetail handles your information</h1>
+    <p class="sub">This policy explains what we collect when you use the platform, audit a domain, or visit citetail.com — why we collect it, and the choices you have.</p>
+    <p class="effective-line">Effective date: <strong>January 15, 2026</strong> &nbsp;·&nbsp; Last updated: <strong>January 15, 2026</strong></p>
+  </div>
+</header>
+
+<div class="wrap policy-layout">
+
+  <aside class="toc" aria-label="Table of contents">
+    <h2>On this page</h2>
+    <ol>
+      <li><a href="#collect">Information we collect</a></li>
+      <li><a href="#use">How we use it</a></li>
+      <li><a href="#share">When we share it</a></li>
+      <li><a href="#cookies">Cookies &amp; tracking</a></li>
+      <li><a href="#retention">How long we keep it</a></li>
+      <li><a href="#rights">Your rights &amp; choices</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#children">Children's privacy</a></li>
+      <li><a href="#transfers">International transfers</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ol>
+  </aside>
+
+  <main>
+
+    <section id="collect" class="p-section">
+      <h2><span class="fnum">01</span>Information we collect</h2>
+      <p>We collect information you give us directly, information generated automatically as you use Citetail's dashboard and free tools, and information from third parties like payment processors.</p>
+
+      <div class="compare-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr><th>Category</th><th>Examples</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Account details</td><td>Name, work email, password, company</td><td>You provide it</td></tr>
+            <tr><td>Domain &amp; content data</td><td>URLs you audit, tracked queries, GEO scores</td><td>You provide it</td></tr>
+            <tr><td>Billing info</td><td>Plan tier, last 4 digits of card, invoices</td><td>Payment processor</td></tr>
+            <tr><td>Usage &amp; device data</td><td>IP address, browser, pages viewed, clicks</td><td>Collected automatically</td></tr>
+            <tr><td>Support interactions</td><td>Messages, chat transcripts, Slack alerts</td><td>You provide it</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>We do not knowingly collect government ID numbers, biometric data, or health information.</p>
+    </section>
+
+    <section id="use" class="p-section">
+      <h2><span class="fnum">02</span>How we use it</h2>
+      <ul>
+        <li><strong>To run the platform</strong> — auditing domains, checking citations across ChatGPT, Perplexity, Gemini, Claude, and Copilot, and generating your AI Visibility Score.</li>
+        <li><strong>To manage your account</strong> — authentication, saved queries, billing, and team seats.</li>
+        <li><strong>To improve Citetail</strong> — understanding which features are used, fixing bugs, and testing new scoring models.</li>
+        <li><strong>To communicate with you</strong> — citation alerts, product updates, and, if you've opted in, research and newsletter content.</li>
+        <li><strong>To prevent fraud and abuse</strong> — detecting suspicious sign-ups and account misuse.</li>
+        <li><strong>To meet legal obligations</strong> — tax records and responding to lawful requests.</li>
+      </ul>
+    </section>
+
+    <section id="share" class="p-section">
+      <h2><span class="fnum">03</span>When we share it</h2>
+      <p>We don't sell your personal information. We share it only in these situations:</p>
+      <ul>
+        <li><strong>Service providers</strong> — hosting, payment processing, and email delivery, bound by contract to use data only to perform their service.</li>
+        <li><strong>Business transfers</strong> — if Citetail is acquired or merges with another company, information may transfer as part of that deal.</li>
+        <li><strong>Legal reasons</strong> — if required by law, subpoena, or to protect the rights and safety of Citetail or our customers.</li>
+        <li><strong>With your consent</strong> — for any other purpose you explicitly agree to.</li>
+      </ul>
+      <div class="def-block">
+        <div class="term">Note</div>
+        <p>Some AI engines we monitor (ChatGPT, Perplexity, Gemini, Claude, Copilot) are queried using publicly available prompts to check citations — we don't send your private account data to these engines.</p>
+      </div>
+    </section>
+
+    <section id="cookies" class="p-section">
+      <h2><span class="fnum">04</span>Cookies &amp; tracking</h2>
+      <p>Citetail uses cookies to keep you signed in, remember dashboard preferences, and understand how the site and free tools are used.</p>
+      <ul>
+        <li><strong>Essential cookies</strong> — required for login and dashboard access. These can't be turned off.</li>
+        <li><strong>Analytics cookies</strong> — help us see aggregate usage patterns across the product and marketing site.</li>
+        <li><strong>Marketing cookies</strong> — used to measure campaign performance; only set with your consent.</li>
+      </ul>
+      <p>You can manage cookie preferences from the "Cookie Settings" link in the footer, or through your browser settings.</p>
+    </section>
+
+    <section id="retention" class="p-section">
+      <h2><span class="fnum">05</span>How long we keep it</h2>
+      <p>We keep account and domain-tracking data for as long as your account is active, plus a period afterward for tax and fraud-prevention purposes — typically seven years for financial records. Support chat logs are kept for two years. You can request earlier deletion; see your rights below.</p>
+    </section>
+
+    <section id="rights" class="p-section">
+      <h2><span class="fnum">06</span>Your rights &amp; choices</h2>
+      <p>Depending on where you live, you may have the right to:</p>
+      <ul>
+        <li><strong>Access</strong> a copy of the personal data we hold about you.</li>
+        <li><strong>Correct</strong> inaccurate or incomplete information.</li>
+        <li><strong>Delete</strong> your data, subject to legal retention requirements.</li>
+        <li><strong>Port</strong> your data to another service in a machine-readable format.</li>
+        <li><strong>Object to or restrict</strong> certain processing, including marketing.</li>
+        <li><strong>Withdraw consent</strong> at any time where processing is based on consent.</li>
+      </ul>
+      <p>To exercise any of these, email <a href="mailto:privacy@citetail.com" style="color:var(--violet-500);font-weight:600;">privacy@citetail.com</a>. We'll respond within 30 days.</p>
+    </section>
+
+    <section id="security" class="p-section">
+      <h2><span class="fnum">07</span>Security</h2>
+      <p>We use encryption in transit (TLS), encrypted storage of payment details via our PCI-compliant processor, and role-based access controls limiting employee access to personal data. No system is perfectly secure, and we encourage using a strong, unique password for your Citetail account.</p>
+    </section>
+
+    <section id="children" class="p-section">
+      <h2><span class="fnum">08</span>Children's privacy</h2>
+      <p>Citetail is a B2B platform not directed at children under 16, and we do not knowingly collect personal information from them. If you believe a child has provided us with personal data, contact us and we'll delete it promptly.</p>
+    </section>
+
+    <section id="transfers" class="p-section">
+      <h2><span class="fnum">09</span>International transfers</h2>
+      <p>Citetail is based in the United States, and some of our service providers operate internationally. Where personal data is transferred outside your home country, we rely on appropriate safeguards such as standard contractual clauses.</p>
+    </section>
+
+    <section id="changes" class="p-section">
+      <h2><span class="fnum">10</span>Changes to this policy</h2>
+      <p>We may update this policy as our practices evolve. If changes are material, we'll notify you by email or with a notice on the site before they take effect. The "Last updated" date at the top reflects the most recent revision.</p>
+    </section>
+
+    <section id="contact" class="p-section">
+      <h2><span class="fnum">11</span>Contact us</h2>
+      <div class="contact-card">
+        <p><strong style="color:var(--text-1);">Citetail, Inc.</strong></p>
+        <p>Privacy Office, 118 Harrow Street, Suite 400, Austin, TX 78701</p>
+        <p>Email: <a href="mailto:privacy@citetail.com">privacy@citetail.com</a></p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <div class="flogo">
+          <img src="/images/logo.png" alt="Citetail logo" width="24" height="24">
+          Citetail
+        </div>
+        <p>Track and improve your brand's visibility across ChatGPT, Claude, Gemini, Copilot and Perplexity — before your competitors get there first.</p>
+
+        <div class="footer-social">
+          <a href="https://linkedin.com/company/citetail" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 5 3.9 6 2.5 6S0 5 0 3.5 1.1 1 2.5 1s2.48 1 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.5c0-1.55-.03-3.55-2.16-3.55-2.16 0-2.5 1.7-2.5 3.44V23h-4V8z"/></svg>
+          </a>
+          <a href="https://twitter.com/citetail" aria-label="Twitter / X" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22H16.9l-5-6.5-5.7 6.5H2.9l8.1-9.3L1.7 2h6.6l4.5 6 5.1-6z"/></svg>
+          </a>
+          <a href="https://github.com/citetail" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11 11 0 0 1 6 0c2.3-1.6 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>
+          </a>
+          <a href="https://instagram.com/citetail" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .25 2.4.42.6.25 1 .55 1.5 1.02.47.47.77.9 1.02 1.5.17.4.36 1.2.42 2.4.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 2-.42 2.4-.25.6-.55 1-.1.02-1.02 1.5-.47.47-.9.77-1.5 1.02-.4.17-1.2.36-2.4.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.25-2.4-.42a4 4 0 0 1-1.5-1.02 4 4 0 0 1-1.02-1.5c-.17-.4-.36-1.2-.42-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-2 .42-2.4.25-.6.55-1 1.02-1.5.47-.47.9-.77 1.5-1.02.4-.17 1.2-.36 2.4-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1 .05-1.6.2-1.9.34-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.14.3-.3.9-.34 1.9C3 9.5 3 9.9 3 12s0 3.5.07 4.7c.05 1 .2 1.6.34 1.9.2.5.4.8.8 1.2.4.4.7.6 1.2.8.3.14.9.3 1.9.34 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c1-.05 1.6-.2 1.9-.34.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.14-.3.3-.9.34-1.9.06-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.05-1-.2-1.6-.34-1.9a3.3 3.3 0 0 0-.8-1.2 3.3 3.3 0 0 0-1.2-.8c-.3-.14-.9-.3-1.9-.34C15.5 4 15.1 4 12 4zm0 3.4a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2zm0 1.8a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zm4.8-2a1.08 1.08 0 1 1 0 2.16 1.08 1.08 0 0 1 0-2.16z"/></svg>
+          </a>
+          <a href="https://youtube.com/@citetail" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+          </a>
+          <a href="https://discord.gg/citetail" aria-label="Discord" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3c-.2.4-.5 1-.7 1.4a18.3 18.3 0 0 0-5.4 0c-.2-.5-.4-1-.7-1.4a19.7 19.7 0 0 0-4.9 1.4C1.2 8.3.5 12 .8 15.6a20 20 0 0 0 6 3c.5-.6.9-1.3 1.3-2-.7-.3-1.4-.6-2-1.1l.5-.4a14.2 14.2 0 0 0 11.9 0l.5.4c-.6.4-1.3.8-2 1a14 14 0 0 0 1.3 2.1 20 20 0 0 0 6-3c.4-4.2-.7-7.8-2.9-11.2zM8.5 13.9c-1 0-1.7-.9-1.7-1.9s.8-1.9 1.7-1.9 1.8.9 1.7 1.9c0 1-.8 1.9-1.7 1.9zm7 0c-1 0-1.7-.9-1.7-1.9s.8-1.9 1.7-1.9 1.7.9 1.7 1.9c0 1-.7 1.9-1.7 1.9z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-head">Product</div>
+        <a href="/#features">GEO Scoring</a>
+        <a href="/#features">Citation Tracking</a>
+        <a href="/#features">Competitor Benchmarking</a>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Pricing</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-head">Learn</div>
+        <a href="/geo">What is GEO</a>
+        <a href="/aeo">What is AEO</a>
+        <a href="/guide/the-geo-playbook">The GEO Playbook</a>
+        <a href="/guide/schema-markup-guide">Schema Markup Guide</a>
+        <a href="/blog/state-of-ai-citations-2026">State of AI Citations 2026</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-head">Free tools</div>
+        <a href="/tool/llms">llms.txt Generator</a>
+        <a href="/tool/sitemap-generator">Sitemap.xml Generator</a>
+        <a href="/tool/prompt-generator">AI Prompt Generator</a>
+        <a href="/tool/faq-schema-generator">FAQ Schema Generator <span class="footer-badge">New</span></a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-head">Company</div>
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
+        <a href="/blog">Research</a>
+        <a href="/careers">Careers</a>
+        <a href="/contact">Contact</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <span class="mono">© 2026 Citetail</span>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+
+      <div class="footer-badges">
+        <a href="https://www.producthunt.com/products/citetail-2?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-citetail-2" target="_blank" rel="noopener noreferrer">
+          <img alt="Citetail - Track your brand's visibility in AI search | Product Hunt" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1224748&amp;theme=light&amp;t=1787037874701">
+        </a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
