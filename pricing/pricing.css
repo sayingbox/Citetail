@@ -157,43 +157,15 @@
     .feat-table thead th,.feat-table tbody td{padding:12px 12px !important;font-size:12.5px !important;}
   }
 
-  /* ----- mobile: stop scrolling sideways, stack into cards ----- */
+  .mobile-compare-note{display:none;}
   @media(max-width:760px){
-    .feat-table-wrap{
-      overflow-x:visible !important;border:none !important;
-      border-radius:0 !important;background:transparent !important;
+    .compare-section .feat-table-wrap{display:none !important;}
+    .mobile-compare-note{
+      display:block;text-align:center;font-size:14px;color:var(--text-2);
+      background:var(--bg-900);border:1px solid var(--line);border-radius:10px;
+      padding:20px;
     }
-    .feat-table{display:block;width:100%;min-width:0;}
-    .feat-table thead{display:none;}
-    .feat-table tbody{display:block;}
-    .feat-table tbody tr{display:block;}
-    .feat-table tbody tr.grp{
-      background:var(--bg-800) !important;border-radius:8px !important;
-      padding:9px 14px !important;margin:18px 0 8px;
-    }
-    .feat-table tbody tr.grp td{
-      display:block !important;padding:0 !important;border:none !important;background:transparent !important;
-    }
-    .feat-table tbody tr:not(.grp){
-      display:block;border:1px solid var(--line);border-radius:10px;
-      padding:4px 14px;margin-bottom:10px;background:var(--bg-900);
-    }
-    .feat-table tbody tr:not(.grp) td{
-      display:flex !important;justify-content:space-between;align-items:center;
-      text-align:right !important;padding:9px 0 !important;
-      border-bottom:1px solid var(--line) !important;white-space:normal;
-    }
-    .feat-table tbody tr:not(.grp) td:last-child{border-bottom:none !important;}
-    .feat-table tbody tr:not(.grp) td:first-child{
-      font-weight:600 !important;color:var(--text-1) !important;
-      justify-content:flex-start;text-align:left !important;
-    }
-    .feat-table tbody td:not(:first-child)::before{
-      content:attr(data-label);
-      font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
-      color:var(--text-2);text-transform:uppercase;letter-spacing:0.04em;
-    }
-    .feat-table tbody td.hl{background:transparent !important;}
+    .mobile-compare-note a{color:var(--violet-500);font-weight:600;}
   }
 
   /* ===== FAQ ===== */
