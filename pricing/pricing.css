@@ -114,7 +114,7 @@
   }
   .section-head p{color:var(--text-2);font-size:15.5px;margin-top:12px;}
   .feat-table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--bg-900);}
-  .feat-table{width:100%;border-collapse:collapse;min-width:820px;}
+  .feat-table{width:100%;border-collapse:collapse;min-width:1200px;}
   .feat-table thead th{
     text-align:center;font-family:'Sora',sans-serif;font-weight:600;font-size:15px;
     color:var(--text-1);padding:22px 18px 14px;border-bottom:1px solid var(--line);background:var(--bg-900);
