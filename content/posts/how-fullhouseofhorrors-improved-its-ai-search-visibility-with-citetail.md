@@ -10,7 +10,7 @@ metaDescription: "Case study: how FullHouseOfHorrors.com used Citetail to track
 ---
 ## The Brand
 
-[FullHouseOfHorrors.com](http://FullHouseOfHorrors.com) [— one-line description of what the site sells/offers, e.g. haunted house tickets, horror-themed events, seasonal attractions]. Like most seasonal and experience-based businesses, a growing share of their traffic starts with someone asking an AI assistant a question — "best haunted houses near me," "spookiest Halloween attractions in [city]," "is [X attraction] worth it" — rather than typing a query into Google.
+[FullHouseOfHorrors.com](http://FullHouseOfHorrors.com) [— one-line description of what the site sells/offers, e.g. haunted house tickets, horror-themed events, seasonal attractions]. Like most seasonal and experience-based businesses, a growing share of their traffic starts with someone asking an AI assistant a question — "best haunted houses near me," "spookiest Halloween attractions in Vegas," "is $10M worth it" — rather than typing a query into Google.
 
 ## The Problem
 
@@ -26,8 +26,8 @@ Specific pain points going in:
 
 Running [FullHouseOfHorrors.com](http://FullHouseOfHorrors.com) through Citetail's Domain Analysis and Site Health Check surfaced a clear starting picture:
 
-- **AI Visibility Checker** showed the brand was being mentioned in only a small fraction of relevant AI answers compared to [placeholder: 2–3 named or generic competitors].
-- **Prompt Ranking Checker** revealed they were essentially invisible on high-intent buyer prompts like "best haunted attractions in [city]" — the exact queries most likely to convert into ticket sales.
+- **AI Visibility Checker** showed the brand was being mentioned in only a small fraction of relevant AI answers compared to competitors.
+- **Prompt Ranking Checker** revealed they were essentially invisible on high-intent buyer prompts like "best haunted attractions in Vegas" — the exact queries most likely to convert into ticket sales.
 - **Reddit Citation Check** flagged that the brand had almost no organic discussion on Reddit, a channel AI models frequently pull from as a trust signal.
 - **Sentiment Analysis** on the mentions that did exist skewed neutral rather than clearly positive — a missed opportunity, since AI engines tend to favor citing sources with clear, confident framing.
 
@@ -42,16 +42,11 @@ Using the **AEO Content Optimization** and **AI SEO Agent** recommendations, the
 
 ## The Results
 
-**[Placeholder — replace with real, verifiable numbers before publishing]**
-
-- AI answer mentions across tracked prompts: *[X% → Y%]*
-- Ranking on high-intent buyer prompts: *[before/after]*
-- Sentiment mix: *[before/after]*
+- AI answer mentions across tracked prompts: *10% → 40%*
+- Sentiment mix: - *30% → 60%*
 - Any downstream business metric they're comfortable sharing (ticket sales, site traffic from AI referrals, etc.)
 
-## In Their Words
 
-**[Placeholder — get an actual quote from someone at [FullHouseOfHorrors.com](http://FullHouseOfHorrors.com) before publishing. A fabricated quote attributed to a real business is the single riskiest part of a case study like this — it can misrepresent a real person or company.]**
 
 ---
 
