@@ -2,6 +2,7 @@
 title: How FullHouseOfHorrors.com Improved Its AI Search Visibility with Citetail
 slug: how-fullhouseofhorrors-improved-its-ai-search-visibility-with-citetail
 date: 2026-08-27
+image: /images/blog/Screenshot 2026-08-27 150728.png
 category: Case Study
 metaTitle: How FullHouseOfHorrors.com Improved AI Search Visibility
 metaDescription: "Case study: how FullHouseOfHorrors.com used Citetail to track
