@@ -202,8 +202,6 @@
 </head>
 <body>
 
-
-  
 <nav>
   <div class="wrap">
     <a href="/" class="logo">
@@ -240,15 +238,14 @@
       <div id="formStatus" class="form-status"></div>
 
       <!--
-        FORM SETUP — replace YOUR_FORM_ID below with your real Formspree
-        (or similar) endpoint ID so submissions deliver to info@citetail.com.
-
-        1. Go to https://formspree.io and create a free account.
-        2. Create a new form, set the destination email to info@citetail.com.
-        3. Copy the endpoint it gives you, e.g. https://formspree.io/f/abcdWXYZ
-        4. Paste it into the `action` attribute below.
+        FORM SETUP — submits to Web3Forms (api.web3forms.com), which emails
+        every submission to info@citetail.com. Access key is already set below.
       -->
-      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+
+        <input type="hidden" name="access_key" value="a509ec7c-4428-4e90-bd0b-da2f6e2079dd">
+        <input type="hidden" name="subject" value="New contact form submission — Citetail">
+        <input type="hidden" name="from_name" value="Citetail Website">
 
         <div class="form-row">
           <div class="field">
@@ -291,9 +288,8 @@
           <textarea id="message" name="message" placeholder="Tell us a bit about what you need..." required></textarea>
         </div>
 
-        <!-- honeypot field to cut down on spam bots -->
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-        <input type="hidden" name="_subject" value="New contact form submission — Citetail">
+        <!-- honeypot field to cut down on spam bots (Web3Forms checks this automatically) -->
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
         <button type="submit" class="submit-btn" id="submitBtn">Send message</button>
 
@@ -436,24 +432,35 @@
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
+
+    // Honeypot check — if the hidden checkbox got checked by a bot, drop it.
+    if (form.botcheck && form.botcheck.checked) {
+      form.reset();
+      return;
+    }
+
     btn.disabled = true;
     btn.textContent = 'Sending...';
     status.className = 'form-status';
     status.textContent = '';
 
     try {
+      const formData = new FormData(form);
+
       const response = await fetch(form.action, {
         method: 'POST',
-        body: new FormData(form),
+        body: formData,
         headers: { 'Accept': 'application/json' }
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (response.status === 200 && result.success) {
         status.className = 'form-status success';
         status.textContent = "Thanks — your message is on its way to info@citetail.com. We'll reply within one business day.";
         form.reset();
       } else {
-        throw new Error('Form submission failed');
+        throw new Error(result.message || 'Form submission failed');
       }
     } catch (err) {
       status.className = 'form-status error';
