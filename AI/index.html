@@ -291,7 +291,7 @@ footer{text-align:center;padding:28px 0;font-size:12px;color:var(--text-3);borde
     loadingBox.classList.add('show');
 
     try {
-      const response = await fetch('/api/full-check', {
+      const response = await fetch('/api/check', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt, domain })
