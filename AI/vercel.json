@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/full-check.js": {
+      "maxDuration": 60
+    }
+  }
+}
