@@ -218,7 +218,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:7
   .feature-row:first-of-type{border-top:none;}
   .feature-row.reverse .feature-copy{order:2;}
   .feature-row.reverse .feature-visual{order:1;}
-  .feature-tag{display:inline-block;font-family:'Inter',sans-serif;font-size:11.5px;color:var(--violet-300);background:var(--violet-900);padding:4px 10px;border-radius:4px;margin-bottom:16px;}
+  .feature-tag{display:inline-block;font-family:'Inter',sans-serif;font-size:11.5px;color:var(--bg-900);background:var(--violet-400);padding:4px 10px;border-radius:4px;margin-bottom:16px;}
   .feature-copy h3{font-size:23px;font-weight:400;margin-bottom:14px;font-family:'Sora',sans-serif;}
   .feature-copy p{color:var(--text-2);font-size:15.5px;margin-bottom:20px;}
   .feature-list{list-style:none;}
