@@ -285,7 +285,7 @@ article hr {
     display: inline-block;
     padding: 5px 11px;
     background: var(--accent);
-    color: var(--accent-text);
+    color: #ffffff;
     border-radius: 4px;
     font-size: 10px;
     font-weight: 800;
