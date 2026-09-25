@@ -33,7 +33,7 @@
 
   
 
-  .hero{padding:84px 0 0;}
+  .hero{padding:75px 0 0;}
   .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
   .kicker{
     font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:var(--gold-500);
