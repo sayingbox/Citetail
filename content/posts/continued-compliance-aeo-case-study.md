@@ -4,7 +4,7 @@ title: How Continued Compliance, Inc. Used Citetail to Identify and Fix AEO
 slug: continued-compliance-aeo-case-study
 date: 2026-10-01
 image: /images/blog/Continued Compliance, Inc..png
-category: case study
+category: Case Study
 metaTitle: Continued Compliance AEO Case Study | Citetail
 metaDescription: See how Continued Compliance, Inc. used Citetail’s AEO Audit to
   identify AI search visibility gaps, fix website issues, and strengthen its AEO
