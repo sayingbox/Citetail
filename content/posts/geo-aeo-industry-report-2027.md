@@ -67,4 +67,6 @@ Understand the developments shaping AI-powered discovery and the growing role of
 
 [Download the Full Report (PDF)]
 
+Link - [https://www.citetail.com/report/AEO_GEO_Industry_Outlook_2027.pdf](https://www.citetail.com/report/AEO_GEO_Industry_Outlook_2027.pdf)
+
 *This report is intended for industry research and informational purposes. It does not represent a universal ranking of platforms or guarantee visibility in AI-generated responses.*
